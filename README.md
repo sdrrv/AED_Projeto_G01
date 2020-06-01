@@ -16,5 +16,5 @@ Pretende-se a implementação de um sistema de planeamento de serviços em unida
 
 ![alt text](https://i.imgflip.com/2adba8.jpg "A Meme a day, kepps the corona away")
 
-A Meme a day, keeps the corona away
+A Meme a day, keeps the corona away.
 
