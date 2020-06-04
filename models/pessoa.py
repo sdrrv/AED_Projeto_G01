@@ -1,4 +1,4 @@
-from tad_pessoa import Pessoa
+from .tad_pessoa import Pessoa
 
 
 class Pessoa(Pessoa):
