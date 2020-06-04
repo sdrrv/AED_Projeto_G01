@@ -9,7 +9,7 @@ class Cuidados(ABC):
 
     #returns the professional in charge of the ciudado
     @abstractmethod
-    def get_professional(self):
+    def get_profissional(self):
         pass
 
     #returns the categoria of the cuidado
