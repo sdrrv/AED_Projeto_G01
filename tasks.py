@@ -17,6 +17,7 @@ def merge(c,branch):
     c.run("git checkout "+branch)
     c.run("git merge master")
     c.run("git checkout "+branch)
+    c.run("git push")
 @task
 def push(c,branch):
     sure= input("Are you sure you want to push to master?(y/n): ")
