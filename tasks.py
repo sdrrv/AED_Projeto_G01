@@ -27,6 +27,5 @@ def push(c,branch):
         c.run("git merge "+branch)
         c.run("git push")
         c.run("git checkout "+branch)
-
     else:
         exit()
