@@ -9,10 +9,13 @@ class Utente(Pessoa,Utente):
         self.lista_de_cuidados = SinglyLinkedList()
     
     def get_faixa_etaria(self):
+        return self.faixa_etaria
+
+    def get_cuidados(self):
+        return self.lista_de_cuidados
+    
+    def add_to_cuidados(self, cuidado):
         pass
 
-    def get_fila(self):
-        pass
-    
-    def add_to_fila(self, cuidado):
+    def remove_cuidados(self, cuidados):
         pass

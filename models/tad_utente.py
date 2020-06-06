@@ -9,11 +9,14 @@ class Utente(ABC,Pessoa):
     
     #Returns the fila of Medical appointments of the Utente
     @abstractmethod
-    def get_fila(self):
+    def get_cuidados(self):
         pass
 
-    #Adds an Medical appointment to the Utente.
+    #Adds a Medical appointment to the Utente.
     @abstractmethod
-    def add_to_fila(self,cuidado):
+    def add_to_cuidados(self,cuidado):
         pass
 
+    #Removes a Medical appointment of the Utente
+    def remove_cuidados(self, cuidados):
+        pass
