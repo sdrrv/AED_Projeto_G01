@@ -28,3 +28,6 @@ class Familia(ABC):
     @abstractmethod
     def add_to_fila_de_ciudados(self,cuidado):
         pass
+    @abstractmethod
+    def remove_from_cuidados(self):
+        pass

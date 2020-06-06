@@ -8,17 +8,22 @@ class Familia(Familia):
         self.lista_de_cuidados = SinglyLinkedList()
     
     def get_name(self):
-        pass
+        return self.nome
 
     def add_member(self, utente):
-        pass
+        self.membros.insert_first(utente)
 
-    def remove_member(self):
-        pass
+    def remove_member(self,utente):
+        position = self.membros.find(utente)
+        self.membros.remove(position)
+        
 
     def get_fila_de_cuidados(self):
-        pass
+        return self.lista_de_cuidados
 
-    def add_to_fila_de_ciudados(self, cuidado):
-        pass
+    def add_to_fila_de_ciudados(self, cuidado): # Duvida, ver em proissionais.
+        self.lista_de_cuidados.insert_last(cuidado)
+    
+    def remove_from_cuidados(self):# duvida ver em prifissionais.
+        self.lista_de_cuidados.remove_last()
     
