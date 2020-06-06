@@ -14,8 +14,8 @@ class Profissional(Profissional,Pessoa):
     def add_to_cuidados(self, cuidado):
         self.lista_de_cuidados.insert_last(cuidado)
 
-    def remove_from_cuidados(self, cuidado): # Duvida, quando removemos um cuidado, temos de remover todos os cuidados adicionados ao mesmo tempo?
-        self.lista_de_cuidados.remove_last()
+    def remove_from_cuidados(self):
+        self.lista_de_cuidados.make_empty()
 
     def get_cuidados(self):
         return self.lista_de_cuidados
