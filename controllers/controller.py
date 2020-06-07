@@ -21,13 +21,10 @@ class Controller:
     def registar_utente(self,name,FaixaEtaria):
         self.utentes.insert(name, Utente(name, FaixaEtaria))
 
-
     def registar_familia(self,NomeFamilia):
-<<<<<<< HEAD
-        pass
+        self.familias.insert(NomeFamilia, Familia(NomeFamilia))
     
     def associar_utente_a_familia(self,nome,NomeFamilia):
         pass
-=======
-        self.familias.insert(NomeFamilia, Familia(NomeFamilia))
->>>>>>> master
+    
+
