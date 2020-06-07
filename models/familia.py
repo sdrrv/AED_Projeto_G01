@@ -8,6 +8,9 @@ class Familia(Familia):
     
     def get_name(self):
         return self.nome
+    
+    def get_members(self):
+        return self.membros
 
     def add_member(self, utente):
         self.membros.insert_first(utente)
