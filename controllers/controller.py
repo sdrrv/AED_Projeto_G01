@@ -15,11 +15,12 @@ class Controller:
         self.FaixasEtarias = HashTable()
         #----------------------------------------
     
-    def registar_profissional(self,categoria,nome):
-        self.profissionais.insert(nome, Profissional(nome,categoria))
+    def registar_profissional(self,categoria,name):
+        self.profissionais.insert(name, Profissional(name,categoria))
     
-    def registar_utente(self,nome,FaixaEtaria):
-        pass
+    def registar_utente(self,name,FaixaEtaria):
+        self.utentes.insert(name, Utente(name, FaixaEtaria))
+
 
     def registar_familia(self,NomeFamilia):
-        pass
+        self.familias.insert(NomeFamilia, Familia(NomeFamilia))
