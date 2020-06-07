@@ -10,6 +10,10 @@ class Controller:
         self.utentes = HashTable()
         self.profissionais = HashTable()
         self.familias = HashTable()
+        #----------------------------------------
+        self.categorias = HashTable()
+        self.FaixasEtarias = HashTable()
+        #----------------------------------------
     
     def registar_profissional(self,categoria,nome):
         pass
