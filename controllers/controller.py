@@ -13,3 +13,9 @@ class Controller:
     
     def registar_profissional(self,categoria,nome):
         pass
+    
+    def registar_utente(self,nome,FaixaEtaria):
+        pass
+
+    def registar_familia(self,NomeFamilia):
+        pass
