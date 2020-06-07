@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-from .tad_pessoa import Pessoa
 
-class Profissional(ABC,Pessoa):
+class Profissional(ABC):
     #Returns the Category of the profissional 
     @abstractmethod
     def get_categoria(self):

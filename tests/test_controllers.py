@@ -8,3 +8,4 @@ class Test_Controllers(unittest.TestCase):
     def test_registar_profissionais(self):
         self.controller.registar_profissional("Medicina","Gilinho")
         self.assertTrue(self.controller.profissionais.has_key("Gilinho"))
+        
