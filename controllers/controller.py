@@ -16,7 +16,7 @@ class Controller:
         #----------------------------------------
     
     def registar_profissional(self,categoria,nome):
-        pass
+        self.profissionais.insert(nome, Profissional(nome,categoria))
     
     def registar_utente(self,nome,FaixaEtaria):
         pass
