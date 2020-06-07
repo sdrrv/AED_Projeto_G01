@@ -16,3 +16,10 @@ class Test_Controllers(unittest.TestCase):
     def test_registar_familia(self):
         self.controller.registar_familia("Gil")
         self.assertTrue(self.controller.familias.has_key("Gil"))
+    
+    def test_associar_utente_a_familia(self):
+        self.controller.registar_utente("Gilinho","Idoso")
+        self.controller.registar_familia("Gil")
+        self.controller.associar_utente_a_familia("Gilinho","Gil")
+        familia=self.controller.familias.get("Gil")
+        #self.assertTrue(familia)

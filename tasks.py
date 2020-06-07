@@ -5,10 +5,10 @@ import re
 def test(c):
     c.run("coverage run -m unittest discover")
 
-@task(test)
+@task()
 def cov(c):
     c.run("coverage report")
-    c.run("coverage html")
+    #c.run("coverage html")
 
 @task
 def merge(c,branch):

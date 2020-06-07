@@ -23,3 +23,6 @@ class Controller:
 
     def registar_familia(self,NomeFamilia):
         pass
+    
+    def associar_utente_a_familia(self,nome,NomeFamilia):
+        pass
