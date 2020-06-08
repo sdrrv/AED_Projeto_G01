@@ -14,6 +14,7 @@ class Controller:
         self.categorias = HashTable()
         self.FaixasEtarias = HashTable()
         #----------------------------------------
+        
     
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))

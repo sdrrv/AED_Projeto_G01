@@ -1,10 +1,10 @@
 from .tad_familia import Familia
-from aed_ds.lists.singly_linked_list import SinglyLinkedList
+from aed_ds.dictionaries.hash_table import HashTable
 
 class Familia(Familia):
     def __init__(self,nome):
         self.nome=nome
-        self.membros= SinglyLinkedList()
+        self.membros = HashTable()
     
     def get_name(self):
         return self.nome
