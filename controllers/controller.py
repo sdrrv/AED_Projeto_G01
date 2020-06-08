@@ -27,7 +27,3 @@ class Controller:
     
     def associar_utente_a_familia(self,name,NomeFamilia):
         pass
-
-    
-    
-
