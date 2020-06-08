@@ -31,4 +31,15 @@ class Test_Controllers(unittest.TestCase):
         self.assertFalse(self.controller.familias.get("Gil").get_members().has_key("Gilinho"))
     
     def test_listar_profissionais(self):
-        pass
+        self.controller.registar_profissional("Medicina","Gilinho")
+        self.controller.registar_profissional("Auxiliar", "Galinha")
+        self.controller.registar_profissional("Medicina","Miguelinho")
+        #-------------------------------------------Galinha----------------------------------------------
+        self.assertEqual(self.controller.listar_profissionais().get(0).get_first(),"Auxiliar")
+        self.assertEqual(self.controller.listar_profissionais().get(0).get_last(),"Galinha")
+        #-------------------------------------------Gilinho----------------------------------------------
+        self.assertEqual(self.controller.listar_profissionais().get(1).get_first(),"Medicina")
+        self.assertEqual(self.controller.listar_profissionais().get(1).get_last(),"Gilinho")
+         #-------------------------------------------Miguelinho----------------------------------------------
+        self.assertEqual(self.controller.listar_profissionais().get(2).get_first(),"Medicina")
+        self.assertEqual(self.controller.listar_profissionais().get(2).get_last(),"Miguelinho")

@@ -40,3 +40,6 @@ class Controller:
     def desassociar_utente_a_familia(self,nome):
         pass
 
+    def listar_profissionais(self):
+        pass #Returns a List [["Medicina","Gilinho"]]
+
