@@ -21,6 +21,14 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_utente("Gilinho","Idoso")
         self.controller.registar_familia("Gil")
         self.controller.associar_utente_a_familia("Gilinho","Gil")
-        familia=self.controller.familias.get("Gil")
-        self.assertTrue(familia.has_key("Gilinho"))
-        
+        self.assertTrue(self.controller.familias.get("Gil").get_members().has_key("Gilinho"))
+
+    def test_desassociar_utente_a_familia(self):
+        self.controller.registar_utente("Gilinho","Idoso")
+        self.controller.registar_familia("Gil")
+        self.controller.associar_utente_a_familia("Gilinho","Gil")
+        self.controller.desassociar_utente_a_familia("Gilinho")
+        self.assertFalse(self.controller.familias.get("Gil").get_members().has_key("Gilinho"))
+    
+    def test_listar_profissionais(self):
+        pass

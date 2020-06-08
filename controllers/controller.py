@@ -37,4 +37,6 @@ class Controller:
     def associar_utente_a_familia(self,nome,NomeFamilia):
         pass
     
+    def desassociar_utente_a_familia(self,nome):
+        pass
 
