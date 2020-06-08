@@ -22,5 +22,5 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_familia("Gil")
         self.controller.associar_utente_a_familia("Gilinho","Gil")
         familia=self.controller.familias.get("Gil")
-        #self.assertTrue(familia)
-    
+        self.assertTrue(familia.has_key("Gilinho"))
+        
