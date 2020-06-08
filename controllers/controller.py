@@ -24,7 +24,9 @@ class Controller:
     def registar_familia(self,NomeFamilia):
         self.familias.insert(NomeFamilia, Familia(NomeFamilia))
     
-    def associar_utente_a_familia(self,nome,NomeFamilia):
+    def associar_utente_a_familia(self,name,NomeFamilia):
         pass
+
+    
     
 
