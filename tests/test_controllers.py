@@ -34,12 +34,12 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_profissional("Medicina","Gilinho")
         self.controller.registar_profissional("Auxiliar", "Galinha")
         self.controller.registar_profissional("Medicina","Miguelinho")
-        #-------------------------------------------Galinha----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(0).get_first(),"Auxiliar")
-        self.assertEqual(self.controller.listar_profissionais().get(0).get_last(),"Galinha")
         #-------------------------------------------Gilinho----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(1).get_first(),"Medicina")
-        self.assertEqual(self.controller.listar_profissionais().get(1).get_last(),"Gilinho")
+        self.assertEqual(self.controller.listar_profissionais().get(0).get_first(),"Medicina")
+        self.assertEqual(self.controller.listar_profissionais().get(0).get_last(),"Gilinho")
          #-------------------------------------------Miguelinho----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(2).get_first(),"Medicina")
-        self.assertEqual(self.controller.listar_profissionais().get(2).get_last(),"Miguelinho")
+        self.assertEqual(self.controller.listar_profissionais().get(1).get_first(),"Medicina")
+        self.assertEqual(self.controller.listar_profissionais().get(1).get_last(),"Miguelinho")
+        #-------------------------------------------Galinha----------------------------------------------
+        self.assertEqual(self.controller.listar_profissionais().get(2).get_first(),"Auxiliar")
+        self.assertEqual(self.controller.listar_profissionais().get(2).get_last(),"Galinha")
