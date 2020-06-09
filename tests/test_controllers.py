@@ -42,15 +42,17 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_profissional("Medicina","Gilinho")
         self.controller.registar_profissional("Auxiliar", "Galinha")
         self.controller.registar_profissional("Medicina","Miguelinho")
+        #------------------------------------------------------------------------------------
+        listar = self.controller.listar_profissionais()
         #-------------------------------------------Gilinho----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(0).get_first(),"Medicina")
-        self.assertEqual(self.controller.listar_profissionais().get(0).get_last(),"Gilinho")
+        self.assertEqual(listar.get(0).get_first(),"Medicina")
+        self.assertEqual(listar.get(0).get_last(),"Gilinho")
          #-------------------------------------------Miguelinho----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(1).get_first(),"Medicina")
-        self.assertEqual(self.controller.listar_profissionais().get(1).get_last(),"Miguelinho")
+        self.assertEqual(listar.get(1).get_first(),"Medicina")
+        self.assertEqual(listar.get(1).get_last(),"Miguelinho")
         #-------------------------------------------Galinha----------------------------------------------
-        self.assertEqual(self.controller.listar_profissionais().get(2).get_first(),"Auxiliar")
-        self.assertEqual(self.controller.listar_profissionais().get(2).get_last(),"Galinha")
+        self.assertEqual(listar.get(2).get_first(),"Auxiliar")
+        self.assertEqual(listar.get(2).get_last(),"Galinha")
     
     def test_listar_utentes(self):
         #[ ["Elvas","Idoso","Dudas"],["Gil","Jovem","Galinha"],["Gil","Idoso","Gilinho"],["","Adulto","Miguelinho"] ]
@@ -64,22 +66,35 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_familia("Elvas")
         self.controller.associar_utente_a_familia("Dudas","Elvas")
         self.controller.registar_utente("Miguelinho","Adulto")
+        #------------------------------------------------------------------------------------
+        listar = self.controller.listar_utentes()
         #--------------------------------------Dudas------------------------------------------
-        self.assertEqual(self.controller.listar_utentes().get(0).get(0),"Elvas")
-        self.assertEqual(self.controller.listar_utentes().get(0).get(1),"Idoso")
-        self.assertEqual(self.controller.listar_utentes().get(0).get(2),"Dudas")
+        self.assertEqual(listar.get(0).get(0),"Elvas")
+        self.assertEqual(listar.get(0).get(1),"Idoso")
+        self.assertEqual(listar.get(0).get(2),"Dudas")
         #--------------------------------------Galinha------------------------------------------
-        self.assertEqual(self.controller.listar_utentes().get(1).get(0),"Gil")
-        self.assertEqual(self.controller.listar_utentes().get(1).get(1),"Jovem")
-        self.assertEqual(self.controller.listar_utentes().get(1).get(2),"Galinha")
+        self.assertEqual(listar.get(1).get(0),"Gil")
+        self.assertEqual(listar.get(1).get(1),"Jovem")
+        self.assertEqual(listar.get(1).get(2),"Galinha")
         #--------------------------------------Dudas------------------------------------------
-        self.assertEqual(self.controller.listar_utentes().get(2).get(0),"Gil")
-        self.assertEqual(self.controller.listar_utentes().get(2).get(1),"Idoso")
-        self.assertEqual(self.controller.listar_utentes().get(2).get(2),"Gilinho")
+        self.assertEqual(listar.get(2).get(0),"Gil")
+        self.assertEqual(listar.get(2).get(1),"Idoso")
+        self.assertEqual(listar.get(2).get(2),"Gilinho")
         #--------------------------------------Dudas------------------------------------------
-        self.assertEqual(self.controller.listar_utentes().get(3).get(0),"")
-        self.assertEqual(self.controller.listar_utentes().get(3).get(1),"Adulto")
-        self.assertEqual(self.controller.listar_utentes().get(3).get(2),"Miguelinho")
+        self.assertEqual(listar.get(3).get(0),"")
+        self.assertEqual(listar.get(3).get(1),"Adulto")
+        self.assertEqual(listar.get(3).get(2),"Miguelinho")
         #-------------------------------------------------------------------------------------
+    
+    def test_listar_familias(self):
+        #["Gil","Rosario"]
+        self.controller.registar_familia("Gil")
+        self.controller.registar_familia("Rosario")
+        #--------------------------------------------------------------------------------------
+        listar= self.controller.listar_familias()
+        #--------------------------------------------------------------------------------------
+        self.assertEqual(listar.get(0),"Gil")
+        #--------------------------------------------------------------------------------------
+        self.assertEqual(listar.get(1),"Rosario")
         
 

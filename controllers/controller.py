@@ -46,3 +46,6 @@ class Controller:
     def listar_utentes(self):
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
+    def listar_familias(self):
+        pass #Returns a list ["Gil","Rosario"]
+
