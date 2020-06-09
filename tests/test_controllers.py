@@ -96,5 +96,28 @@ class Test_Controllers(unittest.TestCase):
         self.assertEqual(listar.get(0),"Gil")
         #--------------------------------------------------------------------------------------
         self.assertEqual(listar.get(1),"Rosario")
+    
+    def test_mostrar_familia(self):
+        #[["Jovem","Galinha"],["Adulto","Miguelinho"]["Idoso","Gilinho"]]
+        self.controller.registar_familia("Gil")
+        self.controller.registar_utente("Gilinho","Idoso")
+        self.controller.associar_utente_a_familia("Gilinho","Gil")
+        self.controller.registar_utente("Galinha","Jovem")
+        self.controller.associar_utente_a_familia("Galinha","Gil")
+        self.controller.registar_utente("Miguelinho","Adulto")
+        self.controller.associar_utente_a_familia("Galinha","Gil")
+        #-------------------------------------------------------------------------
+        listar = self.controller.mostrar_familia("Gil")
+        #----------------------------Galinha---------------------------------------
+        self.assertEqual(listar.get(0).get_first(),"Jovem")
+        self.assertEqual(listar.get(0).get_last(),"Galinha")
+        #----------------------------Miguelinho---------------------------------------
+        self.assertEqual(listar.get(1).get_first(),"Adulto")
+        self.assertEqual(listar.get(1).get_last(),"Miguelinho")
+        #----------------------------Gilinho---------------------------------------
+        self.assertEqual(listar.get(2).get_first(),"Idoso")
+        self.assertEqual(listar.get(2).get_last(),"Gilinho")
+        #---------------------------------------------------------------------------
+        
         
 

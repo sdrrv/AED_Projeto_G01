@@ -48,4 +48,6 @@ class Controller:
 
     def listar_familias(self):
         pass #Returns a list ["Gil","Rosario"]
-
+    
+    def mostrar_familia(self,NomeFamilia):
+        pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
