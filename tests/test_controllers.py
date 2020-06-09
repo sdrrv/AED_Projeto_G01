@@ -118,6 +118,11 @@ class Test_Controllers(unittest.TestCase):
         self.assertEqual(listar.get(2).get_first(),"Idoso")
         self.assertEqual(listar.get(2).get_last(),"Gilinho")
         #---------------------------------------------------------------------------
-        
+    
+    def test_marcar_cuidados_a_utente(self):
+        self.controller.registar_utente("Dudas","Idoso")
+        self.controller.registar_profissional("Medicina","Gilinho")
+        self.controller.marcar_cuidados_a_utente("Dudas","Consulta","Medicina","Gilinho")
+        self.assertEqual(self.controller.utentes.get("Dudas").get_cuidados().get_first().get_servico(),"Consulta")
         
 

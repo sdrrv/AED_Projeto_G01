@@ -51,3 +51,6 @@ class Controller:
     
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
+
+    def marcar_cuidados_a_utente(self,nome,servico,categoria,NomeProfissional):
+        pass
