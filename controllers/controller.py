@@ -14,15 +14,15 @@ class Controller:
         self.familias = HashTable()
         #----------------------------------------
         self.categorias = HashTable()
-        self.faixasetarias = SinglyLinkedList();
+        self.faixasetarias = HashTable()
         #------------------categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
         self.categorias.insert("Auxiliar",HashTable())
         #-------------------Faixas-Etárias-------------
-        self.faixasetarias.insert_last("Medicina")
-        self.faixasetarias.insert_last("Enfermagem")
-        self.faixasetarias.insert_last("Auxiliar")
+        self.faixasetarias.insert("Medicina",SinglyLinkedList())
+        self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
+        self.faixasetarias.insert("Auxiliar",SinglyLinkedList())
         #----------------------------------------------
 
     def registar_profissional(self,categoria,name):
@@ -42,4 +42,7 @@ class Controller:
 
     def listar_profissionais(self):
         pass #Returns a List [["Medicina","Gilinho"]]
+
+    def listar_utentes(self):
+        pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
