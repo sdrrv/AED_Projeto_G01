@@ -5,17 +5,26 @@ from models.cuidados import Cuidados
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 from aed_ds.dictionaries.hash_table import HashTable
 
+
 class Controller:
     def __init__(self):
+        #------------Dicionário-Geral------------
         self.utentes = HashTable()
         self.profissionais = HashTable()
         self.familias = HashTable()
         #----------------------------------------
         self.categorias = HashTable()
-        self.FaixasEtarias = HashTable()
-        #----------------------------------------
-        
-    
+        self.faixasetarias = SinglyLinkedList();
+        #------------------categorias-----------------
+        self.categorias.insert("Medicina",HashTable())
+        self.categorias.insert("Enfermagem",HashTable())
+        self.categorias.insert("Auxiliar",HashTable())
+        #-------------------Faixas-Etárias-------------
+        self.faixasetarias.insert_last("Medicina")
+        self.faixasetarias.insert_last("Enfermagem")
+        self.faixasetarias.insert_last("Auxiliar")
+        #----------------------------------------------
+
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
     
