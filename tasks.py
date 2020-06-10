@@ -5,7 +5,7 @@ import re
 def test(c):
     c.run("coverage run -m unittest discover")
 
-@task()
+@task(test)
 def cov(c):
     c.run("coverage report")
     #c.run("coverage html")

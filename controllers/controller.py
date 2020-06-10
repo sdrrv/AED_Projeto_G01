@@ -54,3 +54,6 @@ class Controller:
 
     def marcar_cuidados_a_utente(self,nome,servico,categoria,NomeProfissional):
         pass
+    
+    def cancelar_cuidados_marcados_a_utente(self,nome):
+        pass
