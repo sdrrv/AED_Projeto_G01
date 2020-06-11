@@ -66,3 +66,6 @@ class Controller:
 
     def listar_servicos_marcados_a_profissional(self,Categoria,NomeProfissional):
         pass # returns a list [["Consulta","Dudas"]]
+
+    def listar_marcações_por_tipo_de_servico(self,servico):
+        pass #Returns a list [["Medicina","Gilinho","Dudas"]]
