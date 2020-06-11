@@ -57,3 +57,6 @@ class Controller:
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
         pass
+
+    def listar_cuidados_marcados_a_utente(self,nome):
+        pass #Returns a list with objects cuidados
