@@ -138,5 +138,22 @@ class Test_Controllers(unittest.TestCase):
         self.controller.marcar_cuidados_a_utente("Dudas","Consulta","Medicina","Gilinho")
         self.controller.cancelar_cuidados_marcados_a_utente("Dudas")
         self.assertEqual(self.controller.listar_cuidados_marcados_a_utente("Dudas").get_first().get_servico(),"Consulta")
+
+    def test_listar_cuidados_marcados_a_familia(self):
+        #[["Galinha","Consulta","Medicina","Gilinho"],["Dudas,"Consulta,"Medicina","Gilinho"]]
+        self.controller.registar_familia("Gil")
+        self.controller.registar_utente("Dudas","Idoso")
+        self.controller.registar_utente("Galinha","Jovem")
+        self.controller.associar_utente_a_familia("Galinha","Gil")
+        self.controller.associar_utente_a_familia("Dudas","Gil")
+        self.controller.registar_profissional("Medicina","Gilinho")
+        self.controller.marcar_cuidados_a_utente("Dudas","Consulta","Medicina","Gilinho")
+        self.controller.marcar_cuidados_a_utente("Galinha","Consulta","Medicina","Gilinho")
+        listar=self.controller.listar_cuidados_marcados_a_familia("Gil")
+        #------------------------------------Galinha-----------------------------------------
+        self.assertEqual(listar.get(0).get_first(),"Galinha")
+        #------------------------------------Dudas-------------------------------------------
+        self.assertEqual(listar.get(1).get_first(),"Dudas")
+        #-------------------------------------------------------------------------------------
         
 

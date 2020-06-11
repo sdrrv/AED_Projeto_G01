@@ -60,3 +60,6 @@ class Controller:
 
     def listar_cuidados_marcados_a_utente(self,nome):
         pass #Returns a list with objects cuidados
+
+    def listar_cuidados_marcados_a_familia(self,NomeFamilia):
+        pass # Returns a list [["Dudas","Consulta","Medicina","Gilinho"]]
