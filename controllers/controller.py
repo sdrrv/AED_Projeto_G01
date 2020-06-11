@@ -63,3 +63,6 @@ class Controller:
 
     def listar_cuidados_marcados_a_familia(self,NomeFamilia):
         pass # Returns a list [["Dudas","Consulta","Medicina","Gilinho"]]
+
+    def listar_servicos_marcados_a_profissional(self,Categoria,NomeProfissional):
+        pass # returns a list [["Consulta","Dudas"]]

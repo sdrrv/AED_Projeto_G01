@@ -155,5 +155,19 @@ class Test_Controllers(unittest.TestCase):
         #------------------------------------Dudas-------------------------------------------
         self.assertEqual(listar.get(1).get_first(),"Dudas")
         #-------------------------------------------------------------------------------------
-        
-
+    
+    def test_listar_servicos_marcados_a_profissional(self):
+        #[["Consulta","Dudas"],["Consulta","Galinha"]]
+        self.controller.registar_utente("Dudas","Idoso")
+        self.controller.registar_utente("Galinha","Jovem")
+        self.controller.registar_profissional("Medicina","Gilinho")
+        #-------------------------------------------------------------------------------------
+        self.controller.marcar_cuidados_a_utente("Dudas","Consulta","Medicina","Gilinho")
+        self.controller.marcar_cuidados_a_utente("Galinha","Consulta","Medicina","Gilinho")
+        #-------------------------------------------------------------------------------------
+        listar=self.controller.listar_servicos_marcados_a_profissional("Medicina","Gilinho")
+        #-----------------------------------------Dudas-----------------------------------------
+        self.assertEqual(listar.get(0).get_last(),"Dudas")
+        #-----------------------------------------Galinha---------------------------------------
+        self.assertEqual(listar.get(1).get_last(),"Galinha")
+        #---------------------------------------------------------------------------------------
