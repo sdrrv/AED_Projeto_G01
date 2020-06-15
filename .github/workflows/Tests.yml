@@ -16,5 +16,6 @@ jobs:
     - name: Test with coverage & unittest
       run: |
         pip install invoke
+        pip install lib/aed_ds.whl
         pip install coverage
         invoke cov
