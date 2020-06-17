@@ -16,6 +16,6 @@ class Utente(ABC):
     def add_to_cuidados(self,cuidado):
         pass
 
-    #Removes a Medical appointment of the Utente
+    #Removes all Medical appointments of the Utente
     def remove_cuidados(self, cuidados):
         pass
