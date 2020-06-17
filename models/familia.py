@@ -1,7 +1,7 @@
-from .tad_familia import Familia
+from .tad_familia import Tad_Familia
 from aed_ds.dictionaries.hash_table import HashTable
 
-class Familia(Familia):
+class Familia(Tad_Familia):
     def __init__(self,nome):
         self.nome=nome
         self.membros = HashTable()

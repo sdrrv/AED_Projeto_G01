@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Profissional(ABC):
+class Tad_Profissional(ABC):
     #Returns the Category of the profissional 
     @abstractmethod
     def get_categoria(self):
