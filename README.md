@@ -7,9 +7,9 @@ Pretende-se a implementação de um sistema de planeamento de serviços em unida
 ---
 * Diogo Vieira - 30005222
 ---
-* Miguel Rosário - 300056009
+* Miguel Rosário - 30005609
 ---
-* João Gil - 50005106
+* João Gil - 30005106
 ---
 
 # Para Inspiração
