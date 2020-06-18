@@ -35,8 +35,9 @@ class Controller:
         self.familias.insert(NomeFamilia, Familia(NomeFamilia))
     
     def associar_utente_a_familia(self,nome,NomeFamilia):
-        pass
-    
+        familia = self.familias.get(NomeFamilia)
+        familia.add_member(self.utentes.get(nome))
+        
     def desassociar_utente_a_familia(self,nome):
         pass
 
