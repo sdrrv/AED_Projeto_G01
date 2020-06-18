@@ -13,7 +13,7 @@ class Familia(Tad_Familia):
         return self.membros
 
     def add_member(self, utente):
-        self.membros.insert_first(utente)
+        self.membros.insert(utente.get_name(),utente)
 
     def remove_member(self,utente):
         position = self.membros.find(utente)
