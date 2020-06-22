@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Utente(ABC):
+class Tad_Utente(ABC):
     #Returns the faixa etaria of the utente
     @abstractmethod
     def get_faixa_etaria(self):
@@ -16,6 +16,6 @@ class Utente(ABC):
     def add_to_cuidados(self,cuidado):
         pass
 
-    #Removes a Medical appointment of the Utente
+    #Removes all Medical appointments of the Utente
     def remove_cuidados(self, cuidados):
         pass

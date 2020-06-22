@@ -1,8 +1,8 @@
-from .tad_profissional import Profissional
+from .tad_profissional import Tad_Profissional
 from .pessoa import Pessoa
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 
-class Profissional(Profissional,Pessoa):
+class Profissional(Tad_Profissional,Pessoa):
     def __init__(self, nome, categoria):
         Pessoa.__init__(self,nome)
         self.categoria=categoria
