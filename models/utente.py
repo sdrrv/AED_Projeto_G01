@@ -1,8 +1,8 @@
 from .pessoa import Pessoa
-from .tad_utente import Utente
+from .tad_utente import Tad_Utente
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 
-class Utente(Pessoa,Utente):
+class Utente(Pessoa,Tad_Utente):
     def __init__(self,nome,Faixa_Etaria):
         Pessoa.__init__(self,nome)
         self.faixa_etaria=Faixa_Etaria 

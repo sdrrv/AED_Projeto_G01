@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Familia(ABC):
+class Tad_Familia(ABC):
 
     #Returns the serviço of the cuidado
     @abstractmethod

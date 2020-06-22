@@ -1,7 +1,7 @@
-from .tad_pessoa import Pessoa
+from .tad_pessoa import Tad_Pessoa
 
 
-class Pessoa(Pessoa):
+class Pessoa(Tad_Pessoa):
     def __init__(self, name):
         self.name = name
 

@@ -1,6 +1,6 @@
-from .tad_cuidados import Cuidados
+from .tad_cuidados import Tad_Cuidados
 
-class Cuidados(Cuidados):
+class Cuidados(Tad_Cuidados):
     def __init__(self,servico,profissional,categoria,utente):
         self.categoria=categoria
         self.servico=servico

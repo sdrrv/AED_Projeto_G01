@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Utente(ABC):
+class Tad_Utente(ABC):
     #Returns the faixa etaria of the utente
     @abstractmethod
     def get_faixa_etaria(self):
