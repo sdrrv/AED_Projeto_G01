@@ -34,17 +34,14 @@ class Controller:
     def registar_familia(self,NomeFamilia):
         self.familias.insert(NomeFamilia, Familia(NomeFamilia))
     
-<<<<<<< HEAD
-    def associar_utente_a_familia(self,name,NomeFamilia):
-        pass
-=======
     def associar_utente_a_familia(self,nome,NomeFamilia):
         familia = self.familias.get(NomeFamilia)
         familia.add_member(self.utentes.get(nome))
         
 
     def desassociar_utente_a_familia(self,nome):
-        pass
+        familia = self.familias.find(nome)
+        familia.remove_member(self.utentes.get(nome))
 
     def listar_profissionais(self):
         pass #Returns a List [["Medicina","Gilinho"]]
@@ -75,4 +72,3 @@ class Controller:
 
     def listar_marcações_por_tipo_de_servico(self,servico):
         pass #Returns a list [["Medicina","Gilinho","Dudas"]]
->>>>>>> master
