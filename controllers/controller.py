@@ -42,7 +42,11 @@ class Controller:
         
 
     def desassociar_utente_a_familia(self,nome):
-        pass
+        utente = self.utentes.get(nome)
+        familia = self.familias.get(utente.get_familia())
+        utente.remove_familia()
+        familia.remove_member(nome)   
+
 
     def listar_profissionais(self):
         pass #Returns a List [["Medicina","Gilinho"]]
