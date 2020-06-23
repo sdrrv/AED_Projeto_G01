@@ -29,11 +29,6 @@ class Test_Controllers(unittest.TestCase):
         self.controller.registar_utente("Gilinho","Idoso")
         self.controller.registar_familia("Gil")
         self.controller.associar_utente_a_familia("Gilinho","Gil")
-<<<<<<< HEAD
-        familia=self.controller.familias.get("Gil")
-        self.assertTrue(familia.has_key("Gilinho"))
-        
-=======
         self.assertTrue(self.controller.familias.get("Gil").get_members().has_key("Gilinho"))
 
     def test_desassociar_utente_a_familia(self):
@@ -191,6 +186,4 @@ class Test_Controllers(unittest.TestCase):
         self.assertEqual(listar.get(0).get_last(),"Dudas")
         #-----------------------------------------Galinha---------------------------------------
         self.assertEqual(listar.get(1).get_last(),"Galinha")
-        #---------------------------------------------------------------------------------------
-
->>>>>>> master
+        

@@ -40,7 +40,7 @@ class Controller:
         
 
     def desassociar_utente_a_familia(self,nome):
-        familia = self.familias.find(nome)
+        familia = self.familias.has_key(nome)
         familia.remove_member(self.utentes.get(nome))
 
     def listar_profissionais(self):
@@ -49,8 +49,14 @@ class Controller:
     def listar_utentes(self):
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
-    def listar_familias(self):
-        pass #Returns a list ["Gil","Rosario"]
+    def listar_familias(self, NomeFamilia):
+        result = []
+        member = self.familias.get(NomeFamilia)
+        pass
+         
+         
+         
+        #pass #Returns a list ["Gil","Rosario"]
     
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
