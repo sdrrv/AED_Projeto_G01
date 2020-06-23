@@ -20,3 +20,5 @@ class Profissional(Tad_Profissional,Pessoa):
     def get_cuidados(self):
         return self.lista_de_cuidados
     
+    def has_cuidados(self):
+        return self.get_cuidados().is_empty()

@@ -29,3 +29,11 @@ class Utente(Pessoa,Tad_Utente):
     
     def set_familia(self,NomeFamila):
         self.familia = NomeFamila
+    
+    def has_familia(self): #Returns true if the utente is in a familia
+        if self.get_familia():
+            return True
+        return False
+    
+    def has_cuidados(self):
+        return self.get_cuidados().is_empty()
