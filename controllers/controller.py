@@ -50,13 +50,7 @@ class Controller:
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
     def listar_familias(self, NomeFamilia):
-        result = []
-        member = self.familias.get(NomeFamilia)
-        pass
-         
-         
-         
-        #pass #Returns a list ["Gil","Rosario"]
+        pass #Returns a list ["Gil","Rosario"]
     
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
