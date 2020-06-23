@@ -7,6 +7,7 @@ class Utente(Pessoa,Tad_Utente):
         Pessoa.__init__(self,nome)
         self.faixa_etaria=Faixa_Etaria 
         self.lista_de_cuidados = SinglyLinkedList()
+        self.familia = None # Sting nome familia
     
     def get_faixa_etaria(self):
         return self.faixa_etaria
@@ -19,3 +20,12 @@ class Utente(Pessoa,Tad_Utente):
 
     def remove_cuidados(self, cuidados):
         self.lista_de_cuidados.make_empty()
+    
+    def get_familia(self):
+        return self.familia
+
+    def remove_familia(self):
+        self.familia= None
+    
+    def set_familia(self,NomeFamila):
+        self.familia = NomeFamila

@@ -36,7 +36,9 @@ class Controller:
     
     def associar_utente_a_familia(self,nome,NomeFamilia):
         familia = self.familias.get(NomeFamilia)
-        familia.add_member(self.utentes.get(nome))
+        Utente=self.utentes.get(nome)
+        familia.add_member(Utente)
+        Utente.set_familia(NomeFamilia)
         
 
     def desassociar_utente_a_familia(self,nome):
