@@ -40,7 +40,7 @@ class Controller:
         
 
     def desassociar_utente_a_familia(self,nome):
-        familia = self.familias.has_key(nome)
+        familia = self.familias.get(nome)
         familia.remove_member(self.utentes.get(nome))
 
     def listar_profissionais(self):
