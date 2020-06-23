@@ -43,7 +43,9 @@ class Controller:
         pass
 
     def listar_profissionais(self):
-        pass #Returns a List [["Medicina","Gilinho"]]
+        pass 
+        self.profissionais.keys()
+        #Returns a List [["Medicina","Gilinho"]]
 
     def listar_utentes(self):
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
