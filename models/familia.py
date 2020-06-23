@@ -16,5 +16,4 @@ class Familia(Tad_Familia):
         self.membros.insert(utente.get_name(),utente)
 
     def remove_member(self,utente):
-        position = self.membros.find(utente)
-        self.membros.remove(position)
+        self.membros.remove(nome)
