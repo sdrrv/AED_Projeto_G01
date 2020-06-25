@@ -18,7 +18,7 @@ class Utente(Pessoa,Tad_Utente):
     def add_to_cuidados(self, cuidado):
         self.lista_de_cuidados.insert_last(cuidado)
 
-    def remove_cuidados(self, cuidados):
+    def remove_cuidados(self):
         self.lista_de_cuidados.make_empty()
     
     def get_familia(self):
