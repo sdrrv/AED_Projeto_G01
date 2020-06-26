@@ -24,10 +24,20 @@ def CLI():
 
         # Resgistar Utente------------------------------"RU Nome FaixaEtária"
         elif (commands[0] == "RU"):
-            pass
+
+            if controller.has_utente(commands[1]):
+                print("Utente existente.")
+
+            elif not controller.has_faixa_etaria(commands[2]):
+                print("Faixa etária inexistente.")
+
+            else:
+                controller.registar_utente(commands[1])
+                print("Utente registado com sucesso.")
 
         # Resgistar Familia-----------------------------"RF NomeFamilia"
         elif(commands[0] == "RF"):
+
             pass
 
         # Associar utente a familia---------------------"AF Nome NomeFamiia"
