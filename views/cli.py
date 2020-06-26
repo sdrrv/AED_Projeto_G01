@@ -38,7 +38,11 @@ def CLI():
         # Resgistar Familia-----------------------------"RF NomeFamilia"
         elif(commands[0] == "RF"):
 
-            pass
+            if controller.has_familia(commands[1]):
+                print("Família existente.")
+            else:
+                controller.registar_familia(commands[1])
+                print("Família registada com sucesso.")
 
         # Associar utente a familia---------------------"AF Nome NomeFamiia"
         elif(commands[0] == "AF"):
