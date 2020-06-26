@@ -109,7 +109,8 @@ class Controller:
         pass
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
-        pass
+        utente = self.utentes.get(nome)
+        utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
         pass #Returns a list with objects cuidados
