@@ -110,7 +110,6 @@ class Controller:
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
         utente = self.utentes.get(nome)
-        utente.has_cuidados()
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
