@@ -120,7 +120,11 @@ class Controller:
         pass
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
-        utente = self.utentes.get(nome)
+        utente = self.get_utente(nome)
+        for key in self.profissionais:
+            profissional= self.get_profissional(key)
+            if profissional.get_cuidados().has_hey(nome):
+                profissional.remove_utente_from_cuidados(nome)
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
