@@ -128,6 +128,7 @@ class Test_Controllers(unittest.TestCase):
     def test_cancelar_cuidados_marcados_a_utente(self):
         self.controller.registar_utente("Dudas","Idoso")
         self.controller.registar_profissional("Medicina","Gilinho")
+        self.controller.registar_profissional("Medicina","Valéria")
         self.controller.marcar_cuidados_a_utente("Dudas","Consulta","Medicina","Gilinho")
         self.controller.cancelar_cuidados_marcados_a_utente("Dudas")
         self.assertTrue(self.controller.utentes.get("Dudas").get_cuidados().is_empty())

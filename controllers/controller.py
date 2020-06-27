@@ -121,9 +121,9 @@ class Controller:
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
         utente = self.get_utente(nome)
-        keys= self.profissionais.keys()
-        while keys.iterator().has_next():
-            profissional = self.get_profissional(keys.iterator().next())
+        keys = self.profissionais.keys().iterator()
+        while keys.has_next():
+            profissional = self.get_profissional(keys.next())
             if profissional.get_cuidados().has_key(nome):
                 profissional.remove_utente_from_cuidados(nome)
         utente.remove_cuidados()
