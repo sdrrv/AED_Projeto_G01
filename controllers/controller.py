@@ -25,6 +25,9 @@ class Controller:
         self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
         self.faixasetarias.insert("Auxiliar",SinglyLinkedList())
         #----------------------Serviços-----------------------------
+        self.faixasetarias.insert("Consulta",SinglyLinkedList())
+        self.faixasetarias.insert("PequenaCirurgia",SinglyLinkedList())
+        self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
         #Temos de decidir como implementar os serviços.
 
     #--------------------------------Checks-------------------------------------------
