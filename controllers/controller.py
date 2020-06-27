@@ -73,8 +73,8 @@ class Controller:
     def has_familia_any_cuidados(self,NomFamilia):#returns true if there´s at least one cuidado in utente in the familia
         familia= self.familias.get(NomFamilia)
         return familia.has_cuidados()
-
-    #---------------------------------------------------------------------------------
+    #---------------------------------------Gets-----------------------------------------
+    #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
     
