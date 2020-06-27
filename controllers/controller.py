@@ -116,9 +116,13 @@ class Controller:
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
 
-    def marcar_cuidados_a_utente(self,nome,servico,categoria,NomeProfissional):
-        pass
+    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados): 
+        pass #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
     
+    def miga(self):
+        pass #chama no final a func marcar_cuidados_a_utente
+    #fazer a func, waiting list que é chamada no cli, e serve como caixote de objetos, cuidados a mandar para mcau.
+
     def cancelar_cuidados_marcados_a_utente(self,nome):
         utente = self.get_utente(nome)
         keys = self.profissionais.keys().iterator()
