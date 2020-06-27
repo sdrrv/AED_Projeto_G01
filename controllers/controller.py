@@ -74,6 +74,14 @@ class Controller:
         familia= self.familias.get(NomFamilia)
         return familia.has_cuidados()
     #---------------------------------------Gets-----------------------------------------
+    def get_utente(self,nome):
+        return self.utentes.get(nome)
+    
+    def get_familia(self,NomeFamilia):
+        return self.familias.get(NomeFamilia)
+    
+    def get_profissional(self,nome):
+        return self.profissionais.get(nome)
     #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
