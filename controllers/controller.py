@@ -25,9 +25,9 @@ class Controller:
         self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
         self.faixasetarias.insert("Auxiliar",SinglyLinkedList())
         #----------------------Serviços-----------------------------
-        self.faixasetarias.insert("Consulta",SinglyLinkedList())
-        self.faixasetarias.insert("PequenaCirurgia",SinglyLinkedList())
-        self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
+        self.serviços.insert("Consulta",SinglyLinkedList())
+        self.serviços.insert("PequenaCirurgia",SinglyLinkedList())
+        self.serviços.insert("Enfermagem",SinglyLinkedList())
         #Temos de decidir como implementar os serviços.
 
     #--------------------------------Checks-------------------------------------------
@@ -121,9 +121,10 @@ class Controller:
     
     def cancelar_cuidados_marcados_a_utente(self,nome):
         utente = self.get_utente(nome)
-        for key in self.profissionais:
-            profissional= self.get_profissional(key)
-            if profissional.get_cuidados().has_hey(nome):
+        keys= self.profissionais.keys()
+        while keys.iterator().has_next():
+            profissional = self.get_profissional(keys.iterator().next())
+            if profissional.get_cuidados().has_key(nome):
                 profissional.remove_utente_from_cuidados(nome)
         utente.remove_cuidados()
 
