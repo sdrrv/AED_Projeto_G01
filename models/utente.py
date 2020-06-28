@@ -37,3 +37,6 @@ class Utente(Pessoa,Tad_Utente):
     
     def has_cuidados(self):
         return self.get_cuidados().is_empty()
+
+    def merge_list(self,list_to_merge):
+        lista=self.lista_de_cuidados

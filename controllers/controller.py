@@ -116,7 +116,11 @@ class Controller:
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
 
-    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados): 
+    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados):
+        utente= self.get_utente(nome)
+        lista_iterator= lista_de_cuidados.iterator()
+        while lista_iterator.has_next():
+            cuidado = lista_iterator.next()
         pass #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
     
     def miga(self):
