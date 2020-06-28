@@ -40,3 +40,9 @@ class Utente(Pessoa,Tad_Utente):
 
     def merge_list(self,list_to_merge):
         lista=self.lista_de_cuidados
+        
+        last_node=lista.get_tail()
+        last_node.set_next(list_to_merge.get_head())
+
+        lista.tail=list_to_merge.tail
+        lista.count+=list_to_merge.count
