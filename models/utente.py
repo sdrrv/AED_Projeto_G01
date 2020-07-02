@@ -40,15 +40,9 @@ class Utente(Pessoa,Tad_Utente):
     
     def has_cuidados(self):
         return self.get_cuidados().is_empty()
-
-    def merge_list(self,list_to_merge):
-        lista=self.lista_de_cuidados
-        
-        last_node=lista.get_tail()
-        last_node.set_next(list_to_merge.get_head())
-
-        lista.tail=list_to_merge.tail
-        lista.count+=list_to_merge.count
+    
+    def add_to_cuidados(self,cuidados):
+        self.get_cuidados.insert_last(cuidados)
 
     def get_profissionais_in(self):
         return self.profissionais_in.keys() # List with all the profissionais in utente

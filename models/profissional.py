@@ -14,7 +14,7 @@ class Profissional(Tad_Profissional,Pessoa):
     
     def add_to_cuidados(self, cuidado):
         utente= cuidado.get_utente()
-        if not self.get_cuidados().has_key(utente):
+        if not self.get_cuidados().has_key(utente): 
             self.lista_de_cuidados.insert(utente,SinglyLinkedList())
 
         utente_list = self.get_cuidados().get(utente)
