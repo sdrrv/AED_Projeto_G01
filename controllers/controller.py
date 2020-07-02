@@ -16,6 +16,7 @@ class Controller:
         self.categorias = HashTable()
         self.faixasetarias = HashTable()
         self.serviços = HashTable()
+        self.tads = HashTable() # Has the position.
         #------------------categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
@@ -25,9 +26,9 @@ class Controller:
         self.faixasetarias.insert("Enfermagem",None)
         self.faixasetarias.insert("Auxiliar",None)
         #----------------------Serviços-----------------------------
-        self.serviços.insert("Consulta",SinglyLinkedList())
-        self.serviços.insert("PequenaCirugia",SinglyLinkedList())
-        self.serviços.insert("Enfermagem",SinglyLinkedList())
+        self.serviços.insert("Consulta",HashTable())
+        self.serviços.insert("PequenaCirugia",HashTable())
+        self.serviços.insert("Enfermagem",HashTable())
         #Temos de decidir como implementar os serviços.
 
     #--------------------------------Checks-------------------------------------------
