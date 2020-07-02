@@ -7,7 +7,7 @@ class Profissional(Tad_Profissional,Pessoa):
     def __init__(self, nome, categoria):
         Pessoa.__init__(self,nome)
         self.categoria=categoria
-        self.lista_de_cuidados = HashTable()
+        self.lista_de_cuidados = HashTable() # Keys=Utentes | Values=List
     
     def get_categoria(self):
         return self.categoria

@@ -41,8 +41,8 @@ class Utente(Pessoa,Tad_Utente):
     def has_cuidados(self):
         return self.get_cuidados().is_empty()
     
-    def add_to_cuidados(self,cuidados):
-        self.get_cuidados.insert_last(cuidados)
+    def add_to_cuidados(self,cuidado):
+        self.get_cuidados.insert_last(cuidado)
 
     def get_profissionais_in(self):
         return self.profissionais_in.keys() # List with all the profissionais in utente
