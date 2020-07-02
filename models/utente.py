@@ -1,6 +1,7 @@
 from .pessoa import Pessoa
 from .tad_utente import Tad_Utente
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
+from aed_ds.dictionaries.hash_table import HashTable
 
 class Utente(Pessoa,Tad_Utente):
     def __init__(self,nome,Faixa_Etaria):
@@ -8,6 +9,7 @@ class Utente(Pessoa,Tad_Utente):
         self.faixa_etaria=Faixa_Etaria 
         self.lista_de_cuidados = SinglyLinkedList()
         self.familia = None # Sting nome familia
+        self.profissionais_in = HashTable()
     
     def get_faixa_etaria(self):
         return self.faixa_etaria
@@ -46,3 +48,14 @@ class Utente(Pessoa,Tad_Utente):
 
         lista.tail=list_to_merge.tail
         lista.count+=list_to_merge.count
+
+    def get_profissionais_in(self):
+        return self.profissionais_in.keys() # List with all the profissionais in utente
+    
+    def add_profissional_in(self,nome_profissional):
+        if not self.profissionais_in.has_key(nome_profissional):
+            self.profissionais_in.insert(nome_profissional,None)
+    
+    def remove_profissional_in(self,nome_profissional):
+        if self.profissionais_in.has_key(nome_profissional):
+            self.profissionais_in.remove(nome_profissional)

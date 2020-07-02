@@ -21,9 +21,9 @@ class Controller:
         self.categorias.insert("Enfermagem",HashTable())
         self.categorias.insert("Auxiliar",HashTable())
         #-------------------Faixas-Etárias-------------
-        self.faixasetarias.insert("Medicina",SinglyLinkedList())
-        self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
-        self.faixasetarias.insert("Auxiliar",SinglyLinkedList())
+        self.faixasetarias.insert("Medicina",None)
+        self.faixasetarias.insert("Enfermagem",None)
+        self.faixasetarias.insert("Auxiliar",None)
         #----------------------Serviços-----------------------------
         self.serviços.insert("Consulta",SinglyLinkedList())
         self.serviços.insert("PequenaCirurgia",SinglyLinkedList())
@@ -120,7 +120,7 @@ class Controller:
         utente= self.get_utente(nome)
         lista_iterator= lista_de_cuidados.iterator()
         while lista_iterator.has_next():
-            cuidado = lista_iterator.next()
+            cuidado= lista_iterator.next()
         pass #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
     
     def miga(self):
@@ -142,7 +142,7 @@ class Controller:
     def listar_cuidados_marcados_a_familia(self,NomeFamilia):
         pass # Returns a list [["Dudas","Consulta","Medicina","Gilinho"]]
 
-    def listar_servicos_marcados_a_profissional(self,Categoria,NomeProfissional):
+    def listar_servicos_marcados_a_profissional(self,categoria,nome_profissional):
         pass # returns a list [["Consulta","Dudas"]]
 
     def listar_marcações_por_tipo_de_servico(self,servico):
