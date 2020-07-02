@@ -10,6 +10,7 @@ class Utente(Pessoa,Tad_Utente):
         self.lista_de_cuidados = SinglyLinkedList()
         self.familia = None # Sting nome familia
         self.profissionais_in = HashTable()
+        self.serviços_in= HashTable()
     
     def get_faixa_etaria(self):
         return self.faixa_etaria
@@ -59,3 +60,14 @@ class Utente(Pessoa,Tad_Utente):
     def remove_profissional_in(self,nome_profissional):
         if self.profissionais_in.has_key(nome_profissional):
             self.profissionais_in.remove(nome_profissional)
+
+    def get_serviços_in(self):
+        return self.serviços_in.keys() # List with all the serviços in utente
+    
+    def add_serviços_in(self,name_serviço):
+        if not self.serviços_in.has_key(name_serviço):
+            self.serviços_in.insert(name_serviço,None)
+    
+    def remove_profissional_in(self,name_serviço):
+        if self.serviços_in.has_key(name_serviço):
+            self.serviços_in.remove(name_serviço)
