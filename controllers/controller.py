@@ -19,7 +19,7 @@ class Controller:
         self.tads = HashTable() # Has the position.
         #-------------------Tads----------------------
         self.tads.insert("Medicina",1)
-        self.tads.insert("Enfermagem",2)
+        self.tads.insert("C_Enfermagem",2)
         self.tads.insert("Auxiliar",3)
 
         self.tads.insert("Jovem",1)
@@ -28,7 +28,7 @@ class Controller:
 
         self.tads.insert("Consula",1)
         self.tads.insert("PequenaCirurgia",2)
-        self.tads.insert("Enfermagem",3)
+        self.tads.insert("S_Enfermagem",3)
         #------------------Categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
@@ -172,7 +172,7 @@ class Controller:
         while serviços_in.has_next():
             self.remove_utente_from_serviço(nome,serviços_in,next())
         #--------------------------------------------------
-        
+
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
