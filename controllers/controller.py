@@ -17,6 +17,19 @@ class Controller:
         self.faixasetarias = HashTable()
         self.serviços = HashTable()
         self.tads = HashTable() # Has the position.
+        #-------------------tads----------------------
+        self.tads.insert("Medicina",1)
+        self.tads.insert("Enfermagem",2)
+        self.tads.insert("Auxiliar",3)
+
+        self.tads.insert("Jovem",1)
+        self.tads.insert("Adulto",2)
+        self.tads.insert("Idoso",3)
+
+        self.tads.insert("Consula",1)
+        self.tads.insert("PequenaCirurgia",2)
+        self.tads.insert("Enfermagem",3)
+
         #------------------categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
@@ -27,7 +40,7 @@ class Controller:
         self.faixasetarias.insert("Auxiliar",None)
         #----------------------Serviços-----------------------------
         self.serviços.insert("Consulta",HashTable())
-        self.serviços.insert("PequenaCirugia",HashTable())
+        self.serviços.insert("PequenaCirurgia",HashTable())
         self.serviços.insert("Enfermagem",HashTable())
         #Temos de decidir como implementar os serviços.
 
