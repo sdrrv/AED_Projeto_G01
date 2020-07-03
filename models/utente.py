@@ -23,6 +23,8 @@ class Utente(Pessoa,Tad_Utente):
 
     def remove_cuidados(self):
         self.lista_de_cuidados.make_empty()
+        self.remove_profissional_in()
+        self.remove_serviços_in()
     
     def get_familia(self):
         return self.familia
@@ -51,9 +53,10 @@ class Utente(Pessoa,Tad_Utente):
         if not self.profissionais_in.has_key(nome_profissional):
             self.profissionais_in.insert(nome_profissional,None)
     
-    def remove_profissional_in(self,nome_profissional):
-        if self.profissionais_in.has_key(nome_profissional):
-            self.profissionais_in.remove(nome_profissional)
+    def remove_profissional_in(self):
+        profissionais_in= self.profissionais_in.keys().iterator()
+        while profissionais_in.has_next():
+            self.profissionais_in.remove(profissionais_in.next())
 
     def get_serviços_in(self):
         return self.serviços_in.keys() # List with all the serviços in utente
@@ -62,6 +65,7 @@ class Utente(Pessoa,Tad_Utente):
         if not self.serviços_in.has_key(name_serviço):
             self.serviços_in.insert(name_serviço,None)
     
-    def remove_profissional_in(self,name_serviço):
-        if self.serviços_in.has_key(name_serviço):
-            self.serviços_in.remove(name_serviço)
+    def remove_serviços_in(self):
+        serviços_in= self.serviços_in.keys().iterator()
+        while serviços_in.has_next():
+            self.serviços_in.remove(serviços_in.next())
