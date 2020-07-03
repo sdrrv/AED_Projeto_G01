@@ -15,9 +15,9 @@ class Controller:
         #----------------------------------------
         self.categorias = HashTable()
         self.faixasetarias = HashTable()
-        self.serviços = HashTable()
+        self.serviços = HashTable() # { "Consulta": { "Duarte" : [Obj_Cuidados] } }
         self.tads = HashTable() # Has the position.
-        #-------------------tads----------------------
+        #-------------------Tads----------------------
         self.tads.insert("Medicina",1)
         self.tads.insert("Enfermagem",2)
         self.tads.insert("Auxiliar",3)
@@ -29,8 +29,7 @@ class Controller:
         self.tads.insert("Consula",1)
         self.tads.insert("PequenaCirurgia",2)
         self.tads.insert("Enfermagem",3)
-
-        #------------------categorias-----------------
+        #------------------Categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
         self.categorias.insert("Auxiliar",HashTable())
@@ -130,7 +129,7 @@ class Controller:
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
 
-    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados):
+    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados): #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
         utente= self.get_utente(nome)
         lista_iterator= lista_de_cuidados.iterator()
         while lista_iterator.has_next(): 
@@ -139,9 +138,21 @@ class Controller:
             profissional = self.get_profissional(cuidado.get_profissional())
             profissional.add_to_cuidados(cuidado)
             #---------------to-serviços--------------------
+            self.add_cuidados_to_serviço(cuidado)
+            #----------------to-utente---------------------
+            utente.add_to_cuidados(cuidado)
+            utente.add_profissional_in(cuidado.get_profissional())
+            utente.add_serviços_in(cuidado.get_serviço())
+            #----------------------------------------------
 
-        pass #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
-    
+    def add_cuidados_to_serviço(self,cuidado): # adds a cuidado to the name of the utente in serviço
+        serviço= self.serviços.get(cuidado.get_serviço())
+        utente= cuidado.get_utente()
+        if not serviço.has_key(utente):
+            serviço.insert(utente,SinglyLinkedList())
+        serviço.get(utente).insert_last(cuidado)
+
+        
     def miga(self):
         pass #chama no final a func marcar_cuidados_a_utente
     #fazer a func, waiting list que é chamada no cli, e serve como caixote de objetos, cuidados a mandar para mcau.
