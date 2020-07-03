@@ -152,6 +152,9 @@ class Controller:
             serviço.insert(utente,SinglyLinkedList())
         serviço.get(utente).insert_last(cuidado)
 
+    def remove_utente_from_serviço(self,nome,serviço):
+        serviço= self.serviços.get(serviço)
+        serviço.remove(nome)
         
     def miga(self):
         pass #chama no final a func marcar_cuidados_a_utente
@@ -159,6 +162,17 @@ class Controller:
 
     def cancelar_cuidados_marcados_a_utente(self,nome):
         utente = self.get_utente(nome)
+        profissionais_in = utente.get_profissionais_in().iterator()
+        serviços_in= utente.get_serviços_in().iterator()
+        #-------------------profissionais------------------
+        while profissionais_in.has_next():
+            profissional=self.get_profissional(profissionais_in.next())
+            profissional.remove_utente_from_cuidados(nome)
+        #-------------------serviços-----------------------
+        while serviços_in.has_next():
+            self.remove_utente_from_serviço(nome,serviços_in,next())
+        #--------------------------------------------------
+        
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
