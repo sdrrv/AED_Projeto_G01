@@ -4,6 +4,7 @@ from models.familia import Familia
 from models.cuidados import Cuidados
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 from aed_ds.dictionaries.hash_table import HashTable
+from utils.sorting_algorithm import Sorting_Algorithm
 
 
 class Controller:
