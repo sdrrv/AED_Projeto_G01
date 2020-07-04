@@ -15,16 +15,32 @@ class Controller:
         #----------------------------------------
         self.categorias = HashTable()
         self.faixasetarias = HashTable()
-        self.serviços = HashTable()
-        #------------------categorias-----------------
+        self.serviços = HashTable() # { "Consulta": { "Duarte" : [Obj_Cuidados] } }
+        self.tads = HashTable() # Has the position.
+        #-------------------Tads----------------------
+        self.tads.insert("Medicina",1)
+        self.tads.insert("C_Enfermagem",2)
+        self.tads.insert("Auxiliar",3)
+
+        self.tads.insert("Jovem",1)
+        self.tads.insert("Adulto",2)
+        self.tads.insert("Idoso",3)
+
+        self.tads.insert("Consula",1)
+        self.tads.insert("PequenaCirurgia",2)
+        self.tads.insert("S_Enfermagem",3)
+        #------------------Categorias-----------------
         self.categorias.insert("Medicina",HashTable())
         self.categorias.insert("Enfermagem",HashTable())
         self.categorias.insert("Auxiliar",HashTable())
         #-------------------Faixas-Etárias-------------
-        self.faixasetarias.insert("Medicina",SinglyLinkedList())
-        self.faixasetarias.insert("Enfermagem",SinglyLinkedList())
-        self.faixasetarias.insert("Auxiliar",SinglyLinkedList())
+        self.faixasetarias.insert("Medicina",None)
+        self.faixasetarias.insert("Enfermagem",None)
+        self.faixasetarias.insert("Auxiliar",None)
         #----------------------Serviços-----------------------------
+        self.serviços.insert("Consulta",HashTable())
+        self.serviços.insert("PequenaCirurgia",HashTable())
+        self.serviços.insert("Enfermagem",HashTable())
         #Temos de decidir como implementar os serviços.
 
     #--------------------------------Checks-------------------------------------------
@@ -70,8 +86,16 @@ class Controller:
     def has_familia_any_cuidados(self,NomFamilia):#returns true if there´s at least one cuidado in utente in the familia
         familia= self.familias.get(NomFamilia)
         return familia.has_cuidados()
-
-    #---------------------------------------------------------------------------------
+    #---------------------------------------Gets-----------------------------------------
+    def get_utente(self,nome):
+        return self.utentes.get(nome)
+    
+    def get_familia(self,NomeFamilia):
+        return self.familias.get(NomeFamilia)
+    
+    def get_profissional(self,nome):
+        return self.profissionais.get(nome)
+    #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
     
@@ -105,11 +129,50 @@ class Controller:
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
 
-    def marcar_cuidados_a_utente(self,nome,servico,categoria,NomeProfissional):
-        pass
-    
+    def marcar_cuidados_a_utente(self,nome,lista_de_cuidados): #pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
+        utente= self.get_utente(nome)
+        lista_iterator= lista_de_cuidados.iterator()
+        while lista_iterator.has_next(): 
+            cuidado= lista_iterator.next()
+            #--------------to-profissional-----------------
+            profissional = self.get_profissional(cuidado.get_profissional())
+            profissional.add_to_cuidados(cuidado)
+            #---------------to-serviços--------------------
+            self.add_cuidados_to_serviço(cuidado)
+            #----------------to-utente---------------------
+            utente.add_to_cuidados(cuidado)
+            utente.add_profissional_in(cuidado.get_profissional())
+            utente.add_serviços_in(cuidado.get_serviço())
+            #----------------------------------------------
+
+    def add_cuidados_to_serviço(self,cuidado): # adds a cuidado to the name of the utente in serviço
+        serviço= self.serviços.get(cuidado.get_serviço())
+        utente= cuidado.get_utente()
+        if not serviço.has_key(utente):
+            serviço.insert(utente,SinglyLinkedList())
+        serviço.get(utente).insert_last(cuidado)
+
+    def remove_utente_from_serviço(self,nome,serviço):
+        serviço= self.serviços.get(serviço)
+        serviço.remove(nome)
+        
+    def miga(self):
+        pass #chama no final a func marcar_cuidados_a_utente
+    #fazer a func, waiting list que é chamada no cli, e serve como caixote de objetos, cuidados a mandar para mcau.
+
     def cancelar_cuidados_marcados_a_utente(self,nome):
-        utente = self.utentes.get(nome)
+        utente = self.get_utente(nome)
+        profissionais_in = utente.get_profissionais_in().iterator()
+        serviços_in= utente.get_serviços_in().iterator()
+        #-------------------profissionais------------------
+        while profissionais_in.has_next():
+            profissional=self.get_profissional(profissionais_in.next())
+            profissional.remove_utente_from_cuidados(nome)
+        #-------------------serviços-----------------------
+        while serviços_in.has_next():
+            self.remove_utente_from_serviço(nome,serviços_in,next())
+        #--------------------------------------------------
+
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self,nome):
@@ -118,7 +181,7 @@ class Controller:
     def listar_cuidados_marcados_a_familia(self,NomeFamilia):
         pass # Returns a list [["Dudas","Consulta","Medicina","Gilinho"]]
 
-    def listar_servicos_marcados_a_profissional(self,Categoria,NomeProfissional):
+    def listar_servicos_marcados_a_profissional(self,categoria,nome_profissional):
         pass # returns a list [["Consulta","Dudas"]]
 
     def listar_marcações_por_tipo_de_servico(self,servico):
