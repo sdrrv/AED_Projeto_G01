@@ -136,9 +136,9 @@ class Controller:
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
     def listar_familias(self):
-        familias= self.familias.keys()
-        result= Sorting_Algorithm().sort(self.list_to_array(familias),familias.size())
-        return result
+        familias= self.list_to_array(self.familias.keys())
+        Sorting_Algorithm().sort(familias,familias.size())
+        return familias
     
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]

@@ -41,4 +41,3 @@ class Sorting_Algorithm:
 
     def sort(self,array_to_sort,size_of_the_array):
         self.mergeSort(array_to_sort,0,size_of_the_array-1)
-        return array_to_sort
