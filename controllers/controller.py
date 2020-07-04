@@ -5,6 +5,7 @@ from models.cuidados import Cuidados
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 from aed_ds.dictionaries.hash_table import HashTable
 from utils.sorting_algorithm import Sorting_Algorithm
+import ctypes
 
 
 class Controller:
@@ -96,6 +97,15 @@ class Controller:
     
     def get_profissional(self,nome):
         return self.profissionais.get(nome)
+    #----------------------------------List-to-array-------------------------------------
+    def list_to_array(self,SinglyList):
+        size= SinglyList.size()
+        it=SinglyList.iterator()
+        i=0
+        result=(size* ctypes.py_object)()
+        while it.has_next():
+            result[i]=it.next()
+            i+=1
     #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
@@ -125,6 +135,8 @@ class Controller:
         pass #Returns a List[["Gil","Idoso","Gilinho"]]
 
     def listar_familias(self):
+        familias= self.familias.keys()
+
         pass #Returns a list ["Gil","Rosario"]
     
     def mostrar_familia(self,NomeFamilia):
