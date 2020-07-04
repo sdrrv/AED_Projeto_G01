@@ -97,7 +97,7 @@ class Controller:
     
     def get_profissional(self,nome):
         return self.profissionais.get(nome)
-    #----------------------------------List-to-array-------------------------------------
+    #----------------------------------Lists-to-arrays-------------------------------------
     def list_to_array(self,SinglyList):
         size= SinglyList.size()
         it=SinglyList.iterator()
@@ -106,6 +106,7 @@ class Controller:
         while it.has_next():
             result[i]=it.next()
             i+=1
+        return result
     #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
         self.profissionais.insert(name, Profissional(name,categoria))
@@ -136,8 +137,8 @@ class Controller:
 
     def listar_familias(self):
         familias= self.familias.keys()
-
-        pass #Returns a list ["Gil","Rosario"]
+        result= Sorting_Algorithm().sort(self.list_to_array(familias),familias.size())
+        return result
     
     def mostrar_familia(self,NomeFamilia):
         pass #Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
