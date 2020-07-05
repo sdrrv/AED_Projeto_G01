@@ -97,6 +97,13 @@ class Controller:
     
     def get_profissional(self,nome):
         return self.profissionais.get(nome)
+    
+    def get_profissionais_in_categoria(self,categoria):
+        return self.categorias.get(categoria).keys()
+    
+    def get_utentes_in_faixa_etaria(self,faixa_etaria):
+        return self.faixasetarias.get(faixa_etaria).keys()
+        
     #----------------------------------Lists-to-arrays-------------------------------------
     def list_to_array(self,SinglyList):
         size= SinglyList.size()
