@@ -15,8 +15,8 @@ class Controller:
         self.profissionais = HashTable()
         self.familias = HashTable()
         #----------------------------------------
-        self.categorias = HashTable()
-        self.faixasetarias = HashTable()
+        self.categorias = HashTable() # { "Medicina":{ "Duarte" : Obj_Profissional } }
+        self.faixasetarias = HashTable()# { "Jovem": { "Duarte" : Obj_Utente } }
         self.serviços = HashTable() # { "Consulta": { "Duarte" : [Obj_Cuidados] } }
         self.tads = HashTable() # Has the position.
         #-------------------Tads----------------------
@@ -36,9 +36,9 @@ class Controller:
         self.categorias.insert("Enfermagem",HashTable())
         self.categorias.insert("Auxiliar",HashTable())
         #-------------------Faixas-Etárias-------------
-        self.faixasetarias.insert("Medicina",None)
-        self.faixasetarias.insert("Enfermagem",None)
-        self.faixasetarias.insert("Auxiliar",None)
+        self.faixasetarias.insert("Medicina",HashTable())
+        self.faixasetarias.insert("Enfermagem",HashTable())
+        self.faixasetarias.insert("Auxiliar",HashTable())
         #----------------------Serviços-----------------------------
         self.serviços.insert("Consulta",HashTable())
         self.serviços.insert("PequenaCirurgia",HashTable())
@@ -109,7 +109,9 @@ class Controller:
         return result
     #------------------------------------------------------------------------------------
     def registar_profissional(self,categoria,name):
-        self.profissionais.insert(name, Profissional(name,categoria))
+        profissional=Profissional(name,categoria)
+        self.profissionais.insert(name, profissional)
+        self.categorias.get(categoria).insert(name,profissional)
     
     def registar_utente(self,name,FaixaEtaria):
         self.utentes.insert(name, Utente(name, FaixaEtaria))
@@ -130,6 +132,8 @@ class Controller:
         familia.remove_member(nome)   
 
     def listar_profissionais(self):
+
+
         pass #Returns a List [["Medicina","Gilinho"]]
 
     def listar_utentes(self):
