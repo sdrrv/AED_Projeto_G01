@@ -20,7 +20,8 @@ class CLI():
                     print("Categoria inexistente.")
 
                 else:
-                    self.controller.registar_profissional(commands[2])
+                    self.controller.registar_profissional(
+                        commands[1], commands[2])
                     print("Profissional registado com sucesso.")
 
             # Resgistar Utente------------------------------"RU Nome FaixaEtária"
@@ -72,15 +73,30 @@ class CLI():
 
             # Listar Profissionais---------------------------"LP"
             elif(commands[0] == "LP"):
-                pass
+                if not self.controller.has_profissionais():
+                    print("Sem profissionais registados.")
+                else:
+                    profissionais = self.controller.listar_profissionais()
+                    for i in profissionais:
+                        print(profissionais[i])
 
             # Listar Utentes---------------------------------"LU"
             elif(commands[0] == "LU"):
-                pass
+                if not self.controller.has_utentes():
+                    print("Sem utentes registados.")
+                else:
+                    utentes = self.controller.listar_utentes()
+                    for i in utentes:
+                        print(utentes[i])
 
             # Listar Familias--------------------------------"LF"
             elif(commands[0] == "LF"):
-                pass
+                if not self.controller.has_familias():
+                    print("Sem famílias registadas.")
+                else:
+                    familias = self.controller.listar_familias()
+                    for i in familias:
+                        print(familias[i])
 
             # Mostrar Familia--------------------------------"MF NomeFamila"
             elif(commands[0] == "MF"):
@@ -106,14 +122,21 @@ class CLI():
 
             # Cancelar cuidados a utente---------------------"CC Nome"
             elif(commands[0] == "CC"):
-                pass
+                if not self.controller.has_utente(commands[1]):
+                    print("Utente inexistente.")
+                elif self.controller.has_utente_any_cuidados(commands[1]):
+                    print("Utente sem cuidados de saúde marcados.")
+                else:
+                    self.controller.cancelar_cuidados_marcados_a_utente(
+                        commands[1])
+                    print("Cuidados de saúde desmarcados com sucesso.")
 
             # Listar cuidados marcados a utente -------------"LCU Nome"
             elif(commands[0] == "LCU"):
                 pass
 
             # Listar cuidados marcados a Familia -------------"LCF NomeFamilia"
-            elif(commands[0] == "LCU"):
+            elif(commands[0] == "LCF"):
                 pass
 
             # Listar serviços marcados a profissional----------"LSP Categoria NomeProfissional"
@@ -124,13 +147,5 @@ class CLI():
             elif(commands[0] == "LMS"):
                 pass
 
-            #Gravar---------------------------------------------"G[ NomeDoFicheiro]"
-            elif(commands[0] == "G"):
-                pass
-
-            #Ler-------------------------------------------------"L[ NomeDoFicheiro]"
-            elif(commands[0] == "L"):
-                pass
-            # ------------------------------------------------------------------------------------------------
             else:
                 print("Instrução inválida.")
