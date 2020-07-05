@@ -114,7 +114,9 @@ class Controller:
         self.categorias.get(categoria).insert(name,profissional)
     
     def registar_utente(self,name,FaixaEtaria):
-        self.utentes.insert(name, Utente(name, FaixaEtaria))
+        utente= Utente(name, FaixaEtaria)
+        self.utentes.insert(name, utente)
+        self.faixasetarias.get(FaixaEtaria).insert(name,utente)
 
     def registar_familia(self,NomeFamilia):
         self.familias.insert(NomeFamilia, Familia(NomeFamilia))
