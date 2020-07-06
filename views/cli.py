@@ -1,4 +1,6 @@
 from controllers.controller import Controller
+from utils.cheapcheat import Cheats
+from models.dumper import Dumper
 
 
 class CLI():
@@ -34,7 +36,7 @@ class CLI():
                     print("Faixa etária inexistente.")
 
                 else:
-                    self.controller.registar_utente(commands[1])
+                    self.controller.registar_utente(commands[1], commands[2])
                     print("Utente registado com sucesso.")
 
             # Resgistar Familia-----------------------------"RF NomeFamilia"
@@ -59,6 +61,7 @@ class CLI():
                 else:
                     self.controller.associar_utente_a_familia(
                         commands[1], commands[2])
+                    print("Utente associado a família.")
 
             # Desassociar utende de familia------------------"DF Nome"
             elif(commands[0] == "DF"):
@@ -70,6 +73,7 @@ class CLI():
 
                 else:
                     self.controller.desassociar_utente_a_familia(commands[1])
+                    print("Utente desassociado de família.")
 
             # Listar Profissionais---------------------------"LP"
             elif(commands[0] == "LP"):
@@ -77,8 +81,10 @@ class CLI():
                     print("Sem profissionais registados.")
                 else:
                     profissionais = self.controller.listar_profissionais()
-                    for i in profissionais:
-                        print(profissionais[i])
+                    categoria = Cheats().categoria()
+                    for i in range(3):
+                        for name in profissionais.get(i):
+                            print(f"{categoria[i]} {name}.")
 
             # Listar Utentes---------------------------------"LU"
             elif(commands[0] == "LU"):
@@ -86,8 +92,10 @@ class CLI():
                     print("Sem utentes registados.")
                 else:
                     utentes = self.controller.listar_utentes()
-                    for i in utentes:
-                        print(utentes[i])
+                    etaria = Cheats().categoria()
+                    for i in range(3):
+                        for name in utentes.get(i):
+                            print(f"{etaria[i]} {name}.")
 
             # Listar Familias--------------------------------"LF"
             elif(commands[0] == "LF"):
@@ -95,18 +103,25 @@ class CLI():
                     print("Sem famílias registadas.")
                 else:
                     familias = self.controller.listar_familias()
-                    for i in familias:
-                        print(familias[i])
+                    for name in familias:
+                        print(f'{name}.')
 
             # Mostrar Familia--------------------------------"MF NomeFamila"
             elif(commands[0] == "MF"):
-                pass
+                if not self.controller.has_familia(commands[0]):
+                    print("Família inexistente.")
+                else:
+                    familia = self.controller.mostrar_familia(commands[0])
+                    etaria = Cheats.faixas()
+                    for i in range(3):
+                        for name in familia.get(i):
+                            print(f"{etaria[i]} {name}.")
 
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
                 if not self.controller.has_utente(commands[1]):
                     print("Utente inexistente.")
-
+                dump = Dumper()
                 while True:
                     subline = input()
 

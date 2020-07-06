@@ -23,11 +23,11 @@ class Controller:
         # { "Consulta": { "Duarte" : [Obj_Cuidados] } }
         self.serviços = HashTable()
         self.tad_serviços = HashTable()
-        self.tad_faixsetarias = HashTable()
+        self.tad_faixasetarias = HashTable()
         self.tad_categorias = HashTable()
         # -------------------Tads----------------------
         self.tad_categorias.insert("Medicina", 1)
-        self.tad_categorias.insert("C_Enfermagem", 2)
+        self.tad_categorias.insert("Enfermagem", 2)
         self.tad_categorias.insert("Auxiliar", 3)
 
         self.tad_faixasetarias.insert("Jovem", 1)
@@ -36,15 +36,15 @@ class Controller:
 
         self.tad_serviços.insert("Consula", 1)
         self.tad_serviços.insert("PequenaCirurgia", 2)
-        self.tad_serviços.insert("S_Enfermagem", 3)
+        self.tad_serviços.insert("Enfermagem", 3)
         # ------------------Categorias-----------------
         self.categorias.insert("Medicina", HashTable())
         self.categorias.insert("Enfermagem", HashTable())
         self.categorias.insert("Auxiliar", HashTable())
         # -------------------Faixas-Etárias-------------
-        self.faixasetarias.insert("Medicina", HashTable())
-        self.faixasetarias.insert("Enfermagem", HashTable())
-        self.faixasetarias.insert("Auxiliar", HashTable())
+        self.faixasetarias.insert("Adulto", HashTable())
+        self.faixasetarias.insert("Jovem", HashTable())
+        self.faixasetarias.insert("Idoso", HashTable())
         # ----------------------Serviços-----------------------------
         self.serviços.insert("Consulta", HashTable())
         self.serviços.insert("PequenaCirurgia", HashTable())
@@ -58,7 +58,7 @@ class Controller:
 
     # returns true if there´s a categorua with that name
     def has_categoria(self, categoria):
-        return self.categorias.has_key(categoria)
+        return self.tad_categorias.has_key(categoria)
 
     def has_utente(self, nome):  # returns true if there´s a utente with that name
         return self.utentes.has_key(nome)
@@ -68,12 +68,13 @@ class Controller:
 
     # returns true if there´s a Faixa Etária with that name
     def has_faixa_etaria(self, FaixaEtaria):
-        return self.faixasetarias.has_key(FaixaEtaria)
+        return self.tad_faixasetarias.has_key(FaixaEtaria)
 
-    def has_serviço(self, servico):  # returns true if there´s a serviço with that name
-        return self.serviços.has_key(servico)
+    def has_servico(self, servico):  # returns true if there´s a serviço with that name
+        return self.tad_serviços.has_key(servico)
 
     # Returns true if the utente is in a familia
+
     def has_utente_a_familia(self, nome):
         utente = self.utentes.get(nome)
         return utente.has_familia()
@@ -146,9 +147,9 @@ class Controller:
 
     def associar_utente_a_familia(self, nome, NomeFamilia):
         familia = self.familias.get(NomeFamilia)
-        Utente = self.utentes.get(nome)
-        familia.add_member(Utente)
-        Utente.set_familia(NomeFamilia)
+        utente = self.utentes.get(nome)
+        familia.add_member(utente)
+        utente.set_familia(NomeFamilia)
 
     def desassociar_utente_a_familia(self, nome):
         utente = self.utentes.get(nome)
@@ -157,21 +158,74 @@ class Controller:
         familia.remove_member(nome)
 
     def listar_profissionais(self):
-        pass  # Returns a List [["Medicina","Gilinho"]]
+        # Returns a List [["Medicina","Gilinho"]]
+        result = SinglyLinkedList()
+        medicina = self.list_to_array(self.categorias.get("Medicina").keys())
+        enfermagem = self.list_to_array(
+            self.categorias.get("Enfermagem").keys())
+        auxiliar = self.list_to_array(self.categorias.get("Auxiliar").keys())
+        if self.categorias.get('Medicina').keys().size() != 0:
+            medicina = Sorting_Algorithm().sort(
+                medicina, self.categorias.get('Medicina').keys().size())
+            result.insert_last(medicina)
+        if self.categorias.get('Enfermagem').keys().size() != 0:
+            enfermagem = Sorting_Algorithm().sort(
+                enfermagem, self.categorias.get("Enfermagem").keys().size())
+            result.insert_last(enfermagem)
+        if self.categorias.get('Auxiliar').keys().size() != 0:
+            auxiliar = Sorting_Algorithm().sort(
+                auxiliar, self.categorias.get("Auxiliar").keys().size())
+            result.insert_last(auxiliar)
+        return result
 
     def listar_utentes(self):
-        pass  # Returns a List[["Gil","Idoso","Gilinho"]]
+        # Returns a List[["Gil","Idoso","Gilinho"]]
+        result = SinglyLinkedList()
+        jovem = self.list_to_array(self.faixasetarias.get("Jovem").keys())
+        adulto = self.list_to_array(self.faixasetarias.get("Adulto").keys())
+        idoso = self.list_to_array(self.faixasetarias.get("Idoso").keys())
+        if self.faixasetarias.get('Jovem').keys().size() != 0:
+            jovem = Sorting_Algorithm().sort(
+                jovem, self.faixasetarias.get('Jovem').keys().size())
+            result.insert_last(jovem)
+        if self.faixasetarias.get('Adulto').keys().size() != 0:
+            adulto = Sorting_Algorithm().sort(
+                adulto, self.faixasetarias.get("Adulto").keys().size())
+            result.insert_last(adulto)
+        if self.faixasetarias.get('Idoso').keys().size() != 0:
+            idoso = Sorting_Algorithm().sort(
+                idoso, self.faixasetarias.get("Idoso").keys().size())
+            result.insert_last(idoso)
+        return result
 
     def listar_familias(self):
-
         familias = self.list_to_array(self.familias.keys())
-        Sorting_Algorithm().sort(familias, familias.size())
+        Sorting_Algorithm().sort(familias, self.familias.keys().size())
         return familias
 
-    def mostrar_familia(self, NomeFamilia):
-        pass  # Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
+    def mostrar_familia(self, nome_familia):
+        # Retuns a list [["Jovem","Galinha"],["Idoso","Gilinho"]]
+        familia = self.get_familia(nome_familia)
+        result = SinglyLinkedList()
+        jovem = self.list_to_array(familia.get_jovens())
+        adulto = self.list_to_array(familia.get_adultos())
+        idoso = self.list_to_array(familia.get_idosos())
+        if familia.get_jovens().size() != 0:
+            jovem = Sorting_Algorithm().sort(
+                jovem, familia.get_jovens().size())
+            result.insert_last(jovem)
+        if familia.get_adultos().size() != 0:
+            adulto = Sorting_Algorithm().sort(
+                adulto, familia.get_adultos().size())
+            result.insert_last(adulto)
+        if familia.get_idosos().size() != 0:
+            idoso = Sorting_Algorithm().sort(
+                idoso, familia.get_idosos().size())
+            result.insert_last(idoso)
+        return result
 
     # pega na lista do cli adiciona á aos cuidados do utente, atualiza o profissional(antes de dar add), meter na hash table do profissional com o nome do utente
+
     def marcar_cuidados_a_utente(self, nome, lista_de_cuidados):
         utente = self.get_utente(nome)
         lista_iterator = lista_de_cuidados.iterator()
