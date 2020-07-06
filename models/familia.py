@@ -23,10 +23,10 @@ class Familia(Tad_Familia):
         return self.fetaria.get('Jovem').keys()
 
     def get_adultos(self):
-        return self.fetaria.get('Jovem').keys()
+        return self.fetaria.get('Adulto').keys()
 
     def get_idosos(self):
-        return self.fetaria.get('Jovem').keys()
+        return self.fetaria.get('Idoso').keys()
 
     def add_member(self, utente):
         self.membros.insert(utente.get_name(), utente)

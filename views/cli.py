@@ -82,6 +82,7 @@ class CLI():
                 else:
                     profissionais = self.controller.listar_profissionais()
                     categoria = Cheats().categoria()
+                    #categoria = self.controller.categorias_to_array()
                     for i in range(3):
                         for name in profissionais.get(i):
                             print(f"{categoria[i]} {name}.")
@@ -92,7 +93,7 @@ class CLI():
                     print("Sem utentes registados.")
                 else:
                     utentes = self.controller.listar_utentes()
-                    etaria = Cheats().categoria()
+                    etaria = Cheats().faixas()
                     for i in range(3):
                         for name in utentes.get(i):
                             print(f"{etaria[i]} {name}.")
@@ -108,14 +109,14 @@ class CLI():
 
             # Mostrar Familia--------------------------------"MF NomeFamila"
             elif(commands[0] == "MF"):
-                if not self.controller.has_familia(commands[0]):
+                if not self.controller.has_familia(commands[1]):
                     print("Família inexistente.")
                 else:
-                    familia = self.controller.mostrar_familia(commands[0])
-                    etaria = Cheats.faixas()
+                    familia = self.controller.mostrar_familia(commands[1])
+                    etaria = Cheats().faixas()
                     for i in range(3):
-                        for name in familia.get(i):
-                            print(f"{etaria[i]} {name}.")
+                        for name in familia.get(0):
+                            print(f"{commands[1]} {etaria[i]} {name}.")
 
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
