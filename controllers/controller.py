@@ -46,7 +46,8 @@ class Controller:
 
     def listar_profissionais(self):
         pass 
-        self.profissionais.keys()
+        List = SinglyLinkedList
+        self.List.insert_first.
         #Returns a List [["Medicina","Gilinho"]]
 
     def listar_utentes(self):
