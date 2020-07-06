@@ -290,3 +290,19 @@ class Controller:
 
     def listar_marcacoes_por_tipo_de_servico(self, servico):
         pass  # Returns a list [["Medicina","Gilinho","Dudas"]]
+
+    # def categorias_to_array(self):
+    #    table = (3*ctypes.py_object)()
+    #    categorias = self.tad_categorias.keys()
+    #    table[0] = self.tad_categorias.
+    #    table[1] = categorias.get(1)
+    #    table[2] = categorias.get(2)
+    #    return table
+
+    # def etarias_to_array(self):
+    #    table = (3*ctypes.py_object)()
+    #    etarias = self.tad_faixasetarias.keys()
+    #    table[0] = etarias.get(0)
+    #    table[1] = etarias.get(1)
+    #    table[2] = etarias.get(2)
+    #    return table
