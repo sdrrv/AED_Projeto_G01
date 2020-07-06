@@ -11,9 +11,9 @@ class Tad_Profissional(ABC):
     def add_to_cuidados(self,cuidado):
         pass
 
-    #removes a cuidado from the cuidados list    
+    #removes a utente from the cuidados list    
     @abstractmethod
-    def remove_from_cuidados(self,cuidado):
+    def remove_utente_from_cuidados(self,cuidado):
         pass
 
     #returns a the cuidados list
