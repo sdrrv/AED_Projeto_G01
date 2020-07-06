@@ -21,8 +21,8 @@ class Controller:
         # { "Jovem": { "Duarte" : Obj_Utente } }
         self.faixasetarias = HashTable()
         # { "Consulta": { "Duarte" : [Obj_Cuidados] } }
-        self.serviços = HashTable()
-        self.tad_serviços = HashTable()
+        self.servicos = HashTable()
+        self.tad_servicos = HashTable()
         self.tad_faixasetarias = HashTable()
         self.tad_categorias = HashTable()
         # -------------------Tads----------------------
@@ -34,9 +34,9 @@ class Controller:
         self.tad_faixasetarias.insert("Adulto", 2)
         self.tad_faixasetarias.insert("Idoso", 3)
 
-        self.tad_serviços.insert("Consula", 1)
-        self.tad_serviços.insert("PequenaCirurgia", 2)
-        self.tad_serviços.insert("Enfermagem", 3)
+        self.tad_servicos.insert("Consula", 1)
+        self.tad_servicos.insert("PequenaCirurgia", 2)
+        self.tad_servicos.insert("Enfermagem", 3)
         # ------------------Categorias-----------------
         self.categorias.insert("Medicina", HashTable())
         self.categorias.insert("Enfermagem", HashTable())
@@ -45,11 +45,11 @@ class Controller:
         self.faixasetarias.insert("Adulto", HashTable())
         self.faixasetarias.insert("Jovem", HashTable())
         self.faixasetarias.insert("Idoso", HashTable())
-        # ----------------------Serviços-----------------------------
-        self.serviços.insert("Consulta", HashTable())
-        self.serviços.insert("PequenaCirurgia", HashTable())
-        self.serviços.insert("Enfermagem", HashTable())
-        # Temos de decidir como implementar os serviços.
+        # ----------------------Servicos-----------------------------
+        self.servicos.insert("Consulta", HashTable())
+        self.servicos.insert("PequenaCirurgia", HashTable())
+        self.servicos.insert("Enfermagem", HashTable())
+        # Temos de decidir como implementar os servicos.
 
     # --------------------------------Checks-------------------------------------------
     # returns true if there´s a professional with that name
@@ -70,8 +70,8 @@ class Controller:
     def has_faixa_etaria(self, FaixaEtaria):
         return self.tad_faixasetarias.has_key(FaixaEtaria)
 
-    def has_servico(self, servico):  # returns true if there´s a serviço with that name
-        return self.tad_serviços.has_key(servico)
+    def has_servico(self, servico):  # returns true if there´s a servico with that name
+        return self.tad_servicos.has_key(servico)
 
     # Returns true if the utente is in a familia
 
@@ -234,25 +234,25 @@ class Controller:
             # --------------to-profissional-----------------
             profissional = self.get_profissional(cuidado.get_profissional())
             profissional.add_to_cuidados(cuidado)
-            # ---------------to-serviços--------------------
-            self.add_cuidados_to_serviço(cuidado)
+            # ---------------to-servicos--------------------
+            self.add_cuidados_to_servico(cuidado)
             # ----------------to-utente---------------------
             utente.add_to_cuidados(cuidado)
             utente.add_profissional_in(cuidado.get_profissional())
-            utente.add_serviços_in(cuidado.get_serviço())
+            utente.add_servicos_in(cuidado.get_servico())
             # ----------------------------------------------
 
-    # adds a cuidado to the name of the utente in serviço
-    def add_cuidados_to_serviço(self, cuidado):
-        serviço = self.serviços.get(cuidado.get_serviço())
+    # adds a cuidado to the name of the utente in servico
+    def add_cuidados_to_servico(self, cuidado):
+        servico = self.servicos.get(cuidado.get_servico())
         utente = cuidado.get_utente()
-        if not serviço.has_key(utente):
-            serviço.insert(utente, SinglyLinkedList())
-        serviço.get(utente).insert_last(cuidado)
+        if not servico.has_key(utente):
+            servico.insert(utente, SinglyLinkedList())
+        servico.get(utente).insert_last(cuidado)
 
-    def remove_utente_from_serviço(self, nome, serviço):
-        serviço = self.serviços.get(serviço)
-        serviço.remove(nome)
+    def remove_utente_from_servico(self, nome, servico):
+        servico = self.servicos.get(servico)
+        servico.remove(nome)
 
     def miga(self):
         pass  # chama no final a func marcar_cuidados_a_utente
@@ -264,19 +264,20 @@ class Controller:
     def cancelar_cuidados_marcados_a_utente(self, nome):
         utente = self.get_utente(nome)
         profissionais_in = utente.get_profissionais_in().iterator()
-        serviços_in = utente.get_serviços_in().iterator()
+        servicos_in = utente.get_servicos_in().iterator()
         # -------------------profissionais------------------
         while profissionais_in.has_next():
             profissional = self.get_profissional(profissionais_in.next())
             profissional.remove_utente_from_cuidados(nome)
-        # -------------------serviços-----------------------
-        while serviços_in.has_next():
-            self.remove_utente_from_serviço(nome, serviços_in, next())
+        # -------------------servicos-----------------------
+        while servicos_in.has_next():
+            self.remove_utente_from_servico(nome, servicos_in, next())
         # --------------------------------------------------
 
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self, nome):
+
         pass  # Returns a list with objects cuidados
 
     def listar_cuidados_marcados_a_familia(self, NomeFamilia):

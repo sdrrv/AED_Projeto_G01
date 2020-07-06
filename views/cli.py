@@ -116,7 +116,7 @@ class CLI():
                     etaria = Cheats().faixas()
                     for i in range(3):
                         for name in familia.get(0):
-                            print(f"{commands[1]} {etaria[i]} {name}.")
+                            print(f"{etaria[i]} {name}.")
 
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
