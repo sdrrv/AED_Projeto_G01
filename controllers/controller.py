@@ -277,7 +277,8 @@ class Controller:
         utente.remove_cuidados()
 
     def listar_cuidados_marcados_a_utente(self, nome):
-
+        utente = self.controller.get_utente(nome)
+        return utente.get_cuidados()
         pass  # Returns a list with objects cuidados
 
     def listar_cuidados_marcados_a_familia(self, NomeFamilia):

@@ -105,7 +105,7 @@ class CLI():
                 else:
                     familias = self.controller.listar_familias()
                     for name in familias:
-                        print(f'{name}.')
+                        print(f'}{name}.')
 
             # Mostrar Familia--------------------------------"MF NomeFamila"
             elif(commands[0] == "MF"):
@@ -149,6 +149,12 @@ class CLI():
 
             # Listar cuidados marcados a utente -------------"LCU Nome"
             elif(commands[0] == "LCU"):
+                if not self.controller.has_utente(commands[1]):
+                    print("Utente inexistente.")
+                elif not self.controller.has_utente_any_cuidados(commands[1]):
+                    print("Utente sem cuidados de saúde marcados.")
+                else:
+
                 pass
 
             # Listar cuidados marcados a Familia -------------"LCF NomeFamilia"
