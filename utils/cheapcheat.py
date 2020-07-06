@@ -1,6 +1,5 @@
 import ctypes
 
-
 class Cheats:
     def categoria(self):
         table = (3*ctypes.py_object)()

@@ -120,20 +120,19 @@ class CLI():
 
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
-                if not self.controller.has_utente(commands[1]):
-                    print("Utente inexistente.")
-                dump = Dumper()
+                name = input()
+                #--------------------------------
+                before_consulta=False
+                after_consulta=False
+                error= None
                 while True:
-                    subline = input()
-
-                    if subline == "":
-                        break
-
-                    inp = subline.split()
-                    if len(inp) == 1:
-                        if not self.controller.has_servico(inp[0]):
-                            print("Serviço inexistente.")
-
+                    serviço=input()
+                    if serviço== "Consulta":
+                        line = input()
+                        input_2= line.split()
+                        categoria = input_2[0]
+                        nome_profissional = input[0]
+                    pass
                 pass
 
             # Cancelar cuidados a utente---------------------"CC Nome"
