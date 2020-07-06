@@ -143,18 +143,54 @@ class CLI():
                             error= "Categoria_inexistente."
                         elif not self.controller.has_professional(nome_profissional)and not error:
                             error: "Profissional de saúde inexistente."
+                        elif categoria!="Medicina" and not error:
+                           error= "Categoria inválida."
                         dump_list.add_item(Consulta(nome_profissional,categoria,name))
                         before_consulta=True
                         after_consulta=True
                     
                     if servico=="PequenaCirugia":
-                        for _ in range(3):
-                            line=input()
-                            input_2=line.split()
-                            categoria = input_2[0]
-                            nome_profissional = input[0]
+                        if not before_consulta and not error:
+                            error= "Sequência inválida."
+                        #--------------------------------------------------------------------------
+                        bool_medicina=False
+                        bool_enfermagem=False
+                        bool_auxiliar=False
+                        #---------------------------------------------------------------------------
+                        line = input()
+                        input_1= line.split()
+                        categoria_1 = input_1[0]
+                        nome_profissional_1 = input[0]
+                        if not self.controller.has_categoria(categoria_1) and not error :
+                            error= "Categoria_inexistente."
+                        elif not self.controller.has_professional(nome_profissional_1)and not error:
+                            error: "Profissional de saúde inexistente."
+                        #----------------------------------------------------------------------------
+                        line = input()
+                        input_2= line.split()
+                        categoria_2 = input_1[0]
+                        nome_profissional_2 = input[0]
+                        if not self.controller.has_categoria(categoria_2) and not error :
+                            error= "Categoria_inexistente."
+                        elif not self.controller.has_professional(nome_profissional_2)and not error:
+                            error: "Profissional de saúde inexistente."
+                        #----------------------------------------------------------------------------
+                        line = input()
+                        input_3= line.split()
+                        categoria_3 = input_1[0]
+                        nome_profissional_3 = input[0]
+                        if not self.controller.has_categoria(categoria_3) and not error :
+                            error= "Categoria_inexistente."
+                        elif not self.controller.has_professional(nome_profissional_3)and not error:
+                            error: "Profissional de saúde inexistente."
+                        #-----------------------------------------------------------------------------
+                        if not(bool_auxiliar and bool_enfermagem and bool_medicina) and not error: # n sei se isto esta bem... estou confuso com a sintaxe, review nedded
+                            error= "Categoria inválida."
+                        #-----------------------------------------------------------------------------
+                        after_consulta=False
+                        #-----------------------------------------------------------------------------
+                        dump_list.add_item(PequenaCirugia())
 
-                        pass
 
             # Cancelar cuidados a utente---------------------"CC Nome"
             elif(commands[0] == "CC"):
