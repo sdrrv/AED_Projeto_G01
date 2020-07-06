@@ -20,3 +20,7 @@ class Tad_Profissional(ABC):
     @abstractmethod
     def get_cuidados(self):
         pass
+
+    @abstractmethod
+    def has_cuidaddos(self):
+        pass
