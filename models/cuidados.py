@@ -20,7 +20,7 @@ class Consulta(Cuidados):
     def __init__(self,profissional, categoria, utente):
         Cuidados.__init__("Consulta", profissional, categoria, utente)
 
-class PequenaCirugia(Cuidados):
+class PequenaCirurgia(Cuidados):
     def __init__(self,profissional_1,profissional_2,profissional_3,categoria, utente):
         Cuidados.__init__("PequenaCirugia", profissional_1, categoria, utente)
         self.profissional_2= profissional_2
@@ -36,6 +36,6 @@ class Enfermagem(Cuidados):
     def __init__(self, serviço, profissional_1,profissional_2, categoria, utente):
         Cuidados.__init__("Enfermagem", profissional_1, categoria, utente)
         self.profissional_2=profissional_2
-        
+
     def get_profissional_2(self):
         return self.profissional_2

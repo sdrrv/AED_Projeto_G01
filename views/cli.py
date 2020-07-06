@@ -1,6 +1,7 @@
 from controllers.controller import Controller
 from utils.cheapcheat import Cheats
 from models.dumper import Dumper
+from models.cuidados import Consulta,Enfermagem,PequenaCirugia
 
 
 class CLI():
@@ -121,19 +122,39 @@ class CLI():
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
                 name = input()
+                dump_list= Dumper()
                 #--------------------------------
                 before_consulta=False
                 after_consulta=False
                 error= None
+                #--------------------------------
+                if not self.controller.has_utente(name):
+                    error= "Utente_inexistente."
                 while True:
-                    serviço=input()
-                    if serviço== "Consulta":
+
+                    servico=input()
+
+                    if servico== "Consulta":
                         line = input()
                         input_2= line.split()
                         categoria = input_2[0]
                         nome_profissional = input[0]
-                    pass
-                pass
+                        if not self.controller.has_categoria(categoria) and not error :
+                            error= "Categoria_inexistente."
+                        elif not self.controller.has_professional(nome_profissional)and not error:
+                            error: "Profissional de saúde inexistente."
+                        dump_list.add_item(Consulta(nome_profissional,categoria,name))
+                        before_consulta=True
+                        after_consulta=True
+                    
+                    if servico=="PequenaCirugia":
+                        for _ in range(3):
+                            line=input()
+                            input_2=line.split()
+                            categoria = input_2[0]
+                            nome_profissional = input[0]
+
+                        pass
 
             # Cancelar cuidados a utente---------------------"CC Nome"
             elif(commands[0] == "CC"):
