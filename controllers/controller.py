@@ -1,7 +1,7 @@
 from models.utente import Utente
 from models.profissional import Profissional
 from models.familia import Familia
-from models.cuidados import Consulta,Enfermagem,PequenaCirugia
+from models.cuidados import Consulta,Enfermagem,PequenaCirurgia
 from aed_ds.lists.singly_linked_list import SinglyLinkedList
 from aed_ds.dictionaries.hash_table import HashTable
 from utils.sorting_algorithm import Sorting_Algorithm
@@ -12,7 +12,7 @@ class Controller:
     def __init__(self):
         # ------------Dicionário-Geral------------
         self.utentes = HashTable()
-        self.profissionais = HashTable()
+        #self.profissionais = HashTable()
         self.familias = HashTable()
 
         # ----------------------------------------
@@ -53,8 +53,8 @@ class Controller:
 
     # --------------------------------Checks-------------------------------------------
     # returns true if there´s a professional with that name
-    def has_professional(self, nome):
-        return self.profissionais.has_key(nome)
+    def has_professional(self, nome,categoria):
+        return self.categorias.get(categoria).has_key(nome)
 
     # returns true if there´s a categorua with that name
     def has_categoria(self, categoria):
@@ -79,8 +79,8 @@ class Controller:
         utente = self.utentes.get(nome)
         return utente.has_familia()
 
-    def has_profissionais(self):  # returns true if there´s at least one professional
-        return self.profissionais.size() != 0
+    def has_profissionais(self,categoria):  # returns true if there´s at least one professional
+        return self.categorias.get(categoria).size() != 0
 
     def has_utentes(self):  # returns true if there´s at least one utente
         return self.utentes.size() != 0
@@ -94,8 +94,8 @@ class Controller:
         return utente.has_cuidados()
 
     # returns true if there´s at least one cuidado in profissional
-    def has_profissional_any_cuidados(self, nome):
-        profissional = self.profissionais.get(nome)
+    def has_profissional_any_cuidados(self, nome,categoria):
+        profissional = self.get_profissional(nome,categoria)
         return profissional.has_cuidados()
 
     # returns true if there´s at least one cuidado in utente in the familia
@@ -111,8 +111,8 @@ class Controller:
     def get_familia(self, NomeFamilia):
         return self.familias.get(NomeFamilia)
 
-    def get_profissional(self, nome):
-        return self.profissionais.get(nome)
+    def get_profissional(self, nome, categoria):
+        return self.categorias.get(categoria).get(nome)
 
     def get_profissionais_in_categoria(self, categoria):
         return self.categorias.get(categoria).keys()
@@ -134,7 +134,7 @@ class Controller:
 
     def registar_profissional(self, categoria, name):
         profissional = Profissional(name, categoria)
-        self.profissionais.insert(name, profissional)
+        #self.profissionais.insert(name, profissional)
         self.categorias.get(categoria).insert(name, profissional)
 
     def registar_utente(self, name, FaixaEtaria):

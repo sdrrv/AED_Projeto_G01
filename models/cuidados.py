@@ -3,6 +3,7 @@ from .tad_cuidados import Tad_Cuidados
 class Cuidados(Tad_Cuidados):
     def __init__(self,serviço,profissional,categoria,utente):
         self.serviço=serviço
+        self.categoria=categoria
         self.profissional= profissional
         self.utente = utente
     
