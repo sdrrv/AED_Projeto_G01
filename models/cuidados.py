@@ -1,9 +1,9 @@
 from .tad_cuidados import Tad_Cuidados
 
 class Cuidados(Tad_Cuidados):
-    def __init__(self,servico,profissional,categoria,utente):
+    def __init__(self,serviço,profissional,categoria,utente):
         self.categoria=categoria
-        self.servico=servico
+        self.serviço=serviço
         self.profissional= profissional
         self.utente = utente
     
@@ -16,5 +16,5 @@ class Cuidados(Tad_Cuidados):
     def get_profissional(self):
         return self.profissional
     
-    def get_servico(self):
-        return self.servico
+    def get_serviço(self):
+        return self.serviço
