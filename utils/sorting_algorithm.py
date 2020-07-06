@@ -39,5 +39,5 @@ class Sorting_Algorithm:
             self.mergeSort(arr, m+1, r) 
             self.merge(arr, l, m, r)
 
-    def sort(self,array_to_sort,size_of_the_array):
+    def sort(self,array_to_sort,size_of_the_array): # Unica para usar
         self.mergeSort(array_to_sort,0,size_of_the_array-1)
