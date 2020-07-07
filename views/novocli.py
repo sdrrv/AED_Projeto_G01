@@ -49,7 +49,7 @@ class CLI():
                     print("Utente inexistente.")
                 elif not self.controller.has_familia(commands[2]):
                     print("Família inexistente.")
-                elif self.controller.has_utente_a_familia(command[1]):
+                elif self.controller.has_utente_a_familia(commands[1]):
                     print("Utente pertence a família.")
                 else:
                     self.controller.associar_utente_a_familia(
