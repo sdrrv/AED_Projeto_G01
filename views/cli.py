@@ -1,10 +1,8 @@
 from controllers.controller import Controller
 from utils.cheapcheat import Cheats
-from models.dumper import Dumper
-from models.cuidados import Consulta,Enfermagem,PequenaCirurgia
 
 
-class CLI():
+class CLI:
     def __init__(self):
         self.controller = Controller()
 
@@ -117,48 +115,56 @@ class CLI():
                     etaria = Cheats().faixas()
                     for i in range(3):
                         for name in familia.get(0):
-                            print(f"{commands[1]} {etaria[i]} {name}.")
+                            print(f"{etaria[i]} {name}.")
 
             # Marcar ciudados a utente-----------------------"MC Nome // Serviço // Categoria Nome Profissional"
             elif(commands[0] == "MC"):
-                name = input()
-                dump_list= Dumper()
+                if not self.controller.has_utente(commands[1]):
+                    print("Utente inexistente.")
+                else:
+                    nome = commands[1]
+                    dump = self.controller.create_dump()
+                    sequence = self.controller.create_dump()
+                    while True:
+                        checker = self.controller.create_checker()
+                        subline = input()
+                        if subline == "":
+                            break
+                        inp = subline.split()
+                        if len(inp) == 1:
+                            servico = inp[0]
+                            if not self.controller.has_servico(inp[0]):
+                                checker.change_servico()
+                            else:
+                                sequence.insert_last(servico)
+                        elif len(inp) == 2:
+                            if not self.controller.has_categoria(inp[0]):
+                                checker.change_categoria()
+                            elif not self.controller.has_professional(inp[1]):
+                                checker.change_profissional()
+                            else:
+                                categoria = inp[0]
+                                profissional = inp[1]
+                                if not self.controller.servico_has_categoria(servico, categoria):
+                                    checker.change_cinvalida()
+                                else:
+                                    cuidado = self.controller.create_cuidado(
+                                        nome, servico, categoria, profissional)
+                                    dump.insert_last(cuidado)
 
-                while True:
-                    servico=input()
-
-                    if servico== "Consulta":
-                        line = input()
-                        input_2= line.split()
-                        categoria = input_2[0]
-                        nome_profissional = input[0]
-                        dump_list.add_item(Consulta(nome_profissional,categoria,name))
-
-                    if servico=="PequenaCirugia":
-
-                        line = input()
-                        input_1= line.split()
-                        categoria_1 = input_1[0]
-                        nome_profissional_1 = input[0]
-                        #----------------------------------------------------------------------------
-                        line = input()
-                        input_2= line.split()
-                        categoria_2 = input_2[0]
-                        nome_profissional_2 = input[0]
-                        #----------------------------------------------------------------------------
-                        line = input()
-                        input_3= line.split()
-                        categoria_3 = input_3[0]
-                        nome_profissional_3 = input[0]
-                        #-----------------------------------------------------------------------------
-                        dump_list.add_item(PequenaCirurgia(nome_profissional_1))
-
+                    if not self.controller.is_valid_sequence(sequence):
+                        checker.change_sinvalida()
+                    if checker.checks_out():
+                        self.controller.marcar_cuidados_a_utente(nome, dump)
+                        print("Cuidados marcados com sucesso.")
+                    else:
+                        print(self.controller.give_checker_error(checker))
 
             # Cancelar cuidados a utente---------------------"CC Nome"
             elif(commands[0] == "CC"):
                 if not self.controller.has_utente(commands[1]):
                     print("Utente inexistente.")
-                elif self.controller.has_utente_any_cuidados(commands[1]):
+                elif not self.controller.has_utente_any_cuidados(commands[1]):
                     print("Utente sem cuidados de saúde marcados.")
                 else:
                     self.controller.cancelar_cuidados_marcados_a_utente(
@@ -167,7 +173,13 @@ class CLI():
 
             # Listar cuidados marcados a utente -------------"LCU Nome"
             elif(commands[0] == "LCU"):
-                pass
+                if not self.controller.has_utente(commands[1]):
+                    print("Utente inexistente.")
+                elif not self.controller.has_utente_any_cuidados(commands[1]):
+                    print("Utente sem cuidados de saúde marcados.")
+                else:
+
+                    pass
 
             # Listar cuidados marcados a Familia -------------"LCF NomeFamilia"
             elif(commands[0] == "LCF"):
