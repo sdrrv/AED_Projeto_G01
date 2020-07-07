@@ -1,7 +1,7 @@
 from controllers.controller import Controller
 from utils.cheapcheat import Cheats
 from models.dumper import Dumper
-from models.cuidados import Consulta,Enfermagem,PequenaCirugia
+from models.cuidados import Consulta,Enfermagem,PequenaCirurgia
 
 
 class CLI():
@@ -151,7 +151,7 @@ class CLI():
                         categoria_3 = input_3[0]
                         nome_profissional_3 = input[0]
                         #-----------------------------------------------------------------------------
-                        dump_list.add_item(PequenaCirugia())
+                        dump_list.add_item(PequenaCirurgia(nome_profissional_1))
 
 
             # Cancelar cuidados a utente---------------------"CC Nome"
