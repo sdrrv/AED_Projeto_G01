@@ -105,7 +105,7 @@ class CLI():
                 else:
                     familias = self.controller.listar_familias()
                     for name in familias:
-                        print(f'}{name}.')
+                        print(f'{name}.')
 
             # Mostrar Familia--------------------------------"MF NomeFamila"
             elif(commands[0] == "MF"):
@@ -133,7 +133,26 @@ class CLI():
                     if len(inp) == 1:
                         if not self.controller.has_servico(inp[0]):
                             print("Serviço inexistente.")
+                        else:
+                            servico = inp[0]
+                    elif len(inp) == 2:
+                        if not self.controller.has_categoria(inp[0]):
+                            print("Categoria inexistente.")
+                        elif not self.controller.has_professional(inp[1]):
+                            print("Profissional de saúde inexistente.")
+                        else:
+                            categoria = inp[0]
+                            profissional = inp[1]
+                            if not self.controller.servicos.has_categoria(categoria):
+                                print("Categoria inválida.")
+                            elif not valid_sequence(sequence):
+                                print("Sequência inválida.")
+                            else:
+                                cuidado = self.controller.create_cuidado(
+                                    nome, servico, categoria, profissional)
+                                dump.insert_last(cuidado)
 
+                return dump
                 pass
 
             # Cancelar cuidados a utente---------------------"CC Nome"
@@ -155,7 +174,7 @@ class CLI():
                     print("Utente sem cuidados de saúde marcados.")
                 else:
 
-                pass
+                    pass
 
             # Listar cuidados marcados a Familia -------------"LCF NomeFamilia"
             elif(commands[0] == "LCF"):
