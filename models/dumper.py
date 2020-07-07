@@ -11,3 +11,6 @@ class Dumper(Tad_Dumper):
 
     def get_items(self):
         return self.lista
+
+    def get_size(self):
+        return self.lista.size()
